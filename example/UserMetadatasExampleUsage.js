@@ -67,9 +67,15 @@ function getMetadata(adminUser) {
 function getMetadataValuesForUpdate(adminUser) {
 
     // TimeZone - an enumeration type
+    /**
+     * See {@link https://momentjs.com/timezone/} for more details
+     */
     var timeZoneIds = moment.tz.names();
 
     // Locale - an enumeration type
+    /**
+     * See {@link https://momentjs.com/} for more details
+     */
     var locales = moment.locales();
 
     // Distance preference - an enumeration type
