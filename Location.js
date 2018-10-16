@@ -2,8 +2,8 @@ function Location(id, dateTime, type, latitude, longitude, altitude, bearing,
                   accuracy, speed, speedUnit, address, addressLineTwo, locality,
                   state, postalCode, country, deviceTypeId, mapImageUrl,
                   successfullyMapImaged, mapImagedCount, successfullyReverseGeocoded, reverseGeocodingCount) {
-    this.id = id;
-    this.dateTime = dateTime;
+    Identifiable.call(this, id);
+    Timestamped.call(this, dateTime);
     this.type = type;
     this.latitude = latitude;
     this.longitude = longitude;
