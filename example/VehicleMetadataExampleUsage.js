@@ -163,7 +163,7 @@ function createVehicleForUpdate(adminUser, existingVehicle, make, model, year, n
         builder.withName(name);
     }
 
-    if ((defaultDriver != null) && (defaultDriver.getId() != null) && !defaultDriver.getId().equals(existing.getDefaultDriverId())) {
+    if ((defaultDriver != null) && (defaultDriver.id != null) && (defaultDriver.id !== existingVehicle.defaultDriverId)) {
         builder.withDefaultDriverId(defaultDriver);
     }
 

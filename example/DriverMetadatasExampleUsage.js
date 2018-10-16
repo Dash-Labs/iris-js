@@ -1,12 +1,12 @@
 function getMetadata(driver) {
 
+    // TimeZone
     /**
      * See {@link https://momentjs.com/timezone/} for more details
      */
     var timeZone = UserMetadatas.TimeZonePreference.get(driver);
 
     // Locale
-    //
     /**
      * See {@link https://momentjs.com/} for more details
      */

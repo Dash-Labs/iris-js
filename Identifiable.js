@@ -1,3 +1,3 @@
-function Identifiable(getId) {
-    this.getId = getId;
+function Identifiable(id) {
+    this.id = id;
 }
