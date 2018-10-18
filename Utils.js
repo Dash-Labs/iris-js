@@ -42,7 +42,7 @@ function getEnumerationValues(enumType){
                 "BCI_71", "BCI_72", "BCI_73", "BCI_74", "BCI_75", "BCI_76", "BCI_78", "BCI_85", "BCI_86",
                 "BCI_90", "BCI_91", "BCI_92", "BCI_93", "BCI_95R", "BCI_96R", "BCI_97R", "BCI_98R"];
         default:
-            throw Error(String.format("Unknown unit type: %s", enumType));
+            throw Error("Unknown unit type: " + enumType);
     }
 }
 
@@ -95,6 +95,6 @@ function getUnitObject(unit) {
         case "None":
             return None;
         default:
-            throw Error(String.format("Unknown unit: %s", unit));
+            throw Error("Unknown unit: " + unit);
     }
 }

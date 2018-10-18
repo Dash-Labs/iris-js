@@ -6,21 +6,14 @@ function AbstractMetadataBuilder(name, metadataType, unit, convertToExpected, ge
             }
             for (var i = 0; i < container.metadata.length; i++) {
                 var element = container.metadata[i];
-                if (element != null && this.getDisplay === element.name) {
+                if (element != null && name != null && name === element.name) {
                     return element;
                 }
             }
         },
         function get(container) {
-            if (container == null || container.metadata == null || container.metadata.length === 0) {
-                return null;
-            }
-            for (var i = 0; i < container.metadata.length; i++) {
-                var element = container.metadata[i];
-                if (element != null && this.getDisplay === element.name) {
-                    return convertToExpected(element.value, element.name)
-                }
-            }
+            var element = this.getMetadata(container);
+            return element == null ? null : getUnitObject(convertToExpected(element.value, element.unit));
         },
         function getOrDefault(container, unit) {
             var value = this.get(container);
@@ -31,7 +24,7 @@ function AbstractMetadataBuilder(name, metadataType, unit, convertToExpected, ge
             if (id == null || id.length === 0) {
                 throw new Error("id cannot be null or empty");
             }
-            return new Metadata(String.format("%s::%s", id, name), name, value, this.getType(), this.getEnumerationValues(), this.getLowerBound(unit),
+            return new Metadata(id + "::" + name, name, value, this.getType(), this.getEnumerationValues(), this.getLowerBound(unit),
                 this.getUpperBound(unit), this.getUnitType(), getUnitObject(unit).name);
         });
     this.name = name;

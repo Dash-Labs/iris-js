@@ -2,11 +2,13 @@ function AbstractEnumMetadataBuilder(name, enumType, unit, getDefault) {
     AbstractMetadataBuilder.call(this, name, "Enumeration", unit,
         function convertToExpected(value, unit) {
             if (value != null && value.length !== 0) {
-                return value;
+                return getUnitObject(value);
             } else {
-                return getDefault(unit);
+                return getUnitObject(getDefault(unit));
             }
-    }, getDefault);
+        }, getDefault);
     this.enumType = enumType;
-    this.getEnumerationValues = getEnumerationValues(enumType);
+    this.getEnumerationValues = function() {
+        return getEnumerationValues(enumType);
+    };
 }

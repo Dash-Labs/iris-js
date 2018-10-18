@@ -222,7 +222,7 @@ function FuelEfficiency(name, label, abbreviation, digitLabel, distance, volume,
 var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "liters per 100km", "l/100km", "l/100km",
     Miles, USGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
-        getUnitObject(unit).toMilesPerUSGallon(fuelEfficiency);
+        return getUnitObject(unit).toMilesPerUSGallon(fuelEfficiency);
     },
     function toMilesPerUSGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
@@ -230,29 +230,29 @@ var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "liters per 100km"
     },
     function toMilesPerImperialGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerImperialGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerImperialGallon);
     },
     function toKilometersPerLiter(fuelEfficiency) {
-        return convert(fuelEfficiency, this.name, "KilometersPerLiter");
+        return convertWithRatio(fuelEfficiency, this, KilometersPerLiter);
     },
     function toLitersPer100Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer100Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer100Kilometer);
     },
     function toLitersPer10Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer10Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer10Kilometer);
     });
 Object.freeze(MilesPerUSGallon);
 
 var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "miles per imperial gallon", "mpg", "mpg",
     Miles, ImperialGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
-        getUnitObject(unit).toMilesPerImperialGallon(fuelEfficiency);
+        return getUnitObject(unit).toMilesPerImperialGallon(fuelEfficiency);
     },
     function toMilesPerUSGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerUSGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerUSGallon);
     },
     function toMilesPerImperialGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
@@ -260,30 +260,30 @@ var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "miles
     },
     function toKilometersPerLiter(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "KilometersPerLiter");
+        return convertWithRatio(fuelEfficiency, this, KilometersPerLiter);
     },
     function toLitersPer100Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer100Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer100Kilometer);
     },
     function toLitersPer10Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer10Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer10Kilometer);
     });
 Object.freeze(MilesPerImperialGallon);
 
 var KilometersPerLiter = new FuelEfficiency("KilometersPerLiter", "kilometers per liter", "kpl", "kpl",
     Kilometers, Liters, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
-        getUnitObject(unit).toKilometersPerLiter(fuelEfficiency);
+        return getUnitObject(unit).toKilometersPerLiter(fuelEfficiency);
     },
     function toMilesPerUSGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerUSGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerUSGallon);
     },
     function toMilesPerImperialGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerImperialGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerImperialGallon);
     },
     function toKilometersPerLiter(fuelEfficiency) {
         validateNumber(fuelEfficiency);
@@ -291,30 +291,30 @@ var KilometersPerLiter = new FuelEfficiency("KilometersPerLiter", "kilometers pe
     },
     function toLitersPer100Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer100Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer100Kilometer);
     },
     function toLitersPer10Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer10Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer10Kilometer);
     });
 Object.freeze(KilometersPerLiter);
 
 var LitersPer100Kilometer = new FuelEfficiency("LitersPer100Kilometer", "liters per 100km", "l/100km", "l/100km",
     Kilometers, Liters, "VolumeOverDistance", 100,
     function convert(fuelEfficiency, unit) {
-        getUnitObject(unit).toLitersPer100Kilometer(fuelEfficiency);
+        return getUnitObject(unit).toLitersPer100Kilometer(fuelEfficiency);
     },
     function toMilesPerUSGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerUSGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerUSGallon);
     },
     function toMilesPerImperialGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerImperialGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerImperialGallon);
     },
     function toKilometersPerLiter(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "KilometersPerLiter");
+        return convertWithRatio(fuelEfficiency, this, KilometersPerLiter);
     },
     function toLitersPer100Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
@@ -322,30 +322,30 @@ var LitersPer100Kilometer = new FuelEfficiency("LitersPer100Kilometer", "liters 
     },
     function toLitersPer10Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer10Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer10Kilometer);
     });
 Object.freeze(LitersPer100Kilometer);
 
 var LitersPer10Kilometer = new FuelEfficiency("LitersPer10Kilometer", "liters per 10km", "l/10km", "l/10km",
     Kilometers, Liters, "VolumeOverDistance", 10,
     function convert(fuelEfficiency, unit) {
-        getUnitObject(unit).toLitersPer10Kilometer(fuelEfficiency);
+        return getUnitObject(unit).toLitersPer10Kilometer(fuelEfficiency);
     },
     function toMilesPerUSGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerUSGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerUSGallon);
     },
     function toMilesPerImperialGallon(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "MilesPerImperialGallon");
+        return convertWithRatio(fuelEfficiency, this, MilesPerImperialGallon);
     },
     function toKilometersPerLiter(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "KilometersPerLiter");
+        return convertWithRatio(fuelEfficiency, this, KilometersPerLiter);
     },
     function toLitersPer100Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
-        return convert(fuelEfficiency, this.name, "LitersPer100Kilometer");
+        return convertWithRatio(fuelEfficiency, this, LitersPer100Kilometer);
     },
     function toLitersPer10Kilometer(fuelEfficiency) {
         validateNumber(fuelEfficiency);
@@ -353,7 +353,7 @@ var LitersPer10Kilometer = new FuelEfficiency("LitersPer10Kilometer", "liters pe
     });
 Object.freeze(LitersPer10Kilometer);
 
-function convert(fuelEfficiency, from, to) {
+function convertWithRatio(fuelEfficiency, from, to) {
     switch (from.ratio) {
         case "DistanceOverVolume":
             return convertFromDistanceOverVolume(fuelEfficiency, from, to);
@@ -365,8 +365,8 @@ function convert(fuelEfficiency, from, to) {
 }
 
 function convertFromDistanceOverVolume(fuelEfficiency, from, to) {
-    var distance = to.distance.convert(fuelEfficiency, from.distance);
-    var volume = to.volume.convert(from.factor, from.volume);
+    var distance = to.distance.convert(fuelEfficiency, from.distance.name);
+    var volume = to.volume.convert(from.factor, from.volume.name);
     if (volume === 0) {
         return 0;
     }
@@ -385,8 +385,8 @@ function convertFromDistanceOverVolume(fuelEfficiency, from, to) {
 }
 
 function convertFromVolumeOverDistance(fuelEfficiency, from, to) {
-    var volume = to.volume.convert(fuelEfficiency, from.volume);
-    var distance = to.distance.convert(from.factor, from.distance);
+    var volume = to.volume.convert(fuelEfficiency, from.volume.name);
+    var distance = to.distance.convert(from.factor, from.distance.name);
     if (distance === 0) {
         return 0;
     }
@@ -538,7 +538,7 @@ Object.freeze(Kilograms);
 
 var None = new  Unit("None", "", "", "",
     function convert(value, unit) {
-            validateNumber(value);
-            return value;
-        });
+        validateNumber(value);
+        return value;
+    });
 Object.freeze(None);

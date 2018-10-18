@@ -85,7 +85,7 @@ var VehicleMetadatas = {
         }),
     StartStop: new AbstractBooleanMetadataBuilder("StartStop", "None",
         function getDefault(unit) {
-            return "false";
+            return false;
         }),
     BatteryGroupSize: new AbstractEnumMetadataBuilder("BatteryGroupSize", "BatteryGroupSize", "None",
         function getDefault(unit) {
