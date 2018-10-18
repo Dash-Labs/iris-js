@@ -1,10 +1,10 @@
 function getMetadata(adminUser) {
 
     // TimeZone
-    var timeZone = TimeZonePreference.get(adminUser);
+    var timeZone = UserMetadatas.TimeZonePreference.get(adminUser);
 
     // Locale
-    var locale = LocalePreference.get(adminUser);
+    var locale = UserMetadatas.LocalePreference.get(adminUser);
 
     // Distance preference
     var distance = UserMetadatas.DistancePreference.get(adminUser);

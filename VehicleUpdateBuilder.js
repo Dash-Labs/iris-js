@@ -72,7 +72,7 @@ function VehicleUpdateBuilder(id) {
         return this;
     };
     this.withWeight = function withWeight(weight, weightUnit) {
-        this.weight = Weight.build(id, weight, weightUnit);
+        this.weight = VehicleMetadatas.Weight.build(id, weight, weightUnit);
         return this;
     };
     this.withEngineCylinders = function withEngineCylinders(engineCylinders) {
@@ -88,7 +88,7 @@ function VehicleUpdateBuilder(id) {
         return this;
     };
     this.withBatteryGroupSize = function withBatteryGroupSize(batteryGroupSize) {
-        this.batteryGroupSize = BatteryGroupSize.build(id, batteryGroupSize, "None");
+        this.batteryGroupSize = VehicleMetadatas.BatteryGroupSize.build(id, batteryGroupSize, "None");
         return this;
     };
     this.withBatteryColdCrankingAmps = function withBatteryColdCrankingAmps(batteryColdCrankingAmps) {

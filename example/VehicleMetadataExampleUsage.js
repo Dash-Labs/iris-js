@@ -1,10 +1,10 @@
 function getMetadata(vehicle) {
 
     // Odometer [in user's Unit.Distance preference]
-    var odometer = Odometer.get(vehicle);
+    var odometer = VehicleMetadatas.Odometer.get(vehicle);
 
     // Fuel Type
-    var fuel = FuelType.get(vehicle);
+    var fuel = VehicleMetadatas.FuelType.get(vehicle);
     var fuelName = fuel.name;
     var fuelLabel = fuel.label;
     var fuelAbbreviation = fuel.abbreviation;
@@ -19,10 +19,10 @@ function getMetadata(vehicle) {
     var highwayFuelEfficiency = VehicleMetadatas.HighwayFuelEfficiency.get(vehicle);
 
     // Tank size [in user's Unit.Volume preference]
-    var tankSize = TankSize.get(vehicle);
+    var tankSize = VehicleMetadatas.TankSize.get(vehicle);
 
     // Oil type
-    var oil = OilType.get(vehicle);
+    var oil = VehicleMetadatas.OilType.get(vehicle);
     var oilName = oil.name;
     var oilLabel = oil.label;
     var oilAbbreviation = oil.abbreviation;
@@ -34,7 +34,7 @@ function getMetadata(vehicle) {
     var horsePower = VehicleMetadatas.HorsePower.get(vehicle);
 
     // Weight
-    var weight = VehicleMetadatas.Weight.get(vehicle); // TODO - ?
+    var weight = VehicleMetadatas.Weight.get(vehicle);
 
     // StartStop
     var startStop = VehicleMetadatas.StartStop.get(vehicle);
@@ -55,14 +55,14 @@ function getMetadata(vehicle) {
 
 function getMetadataValuesForUpdate(vehicle) {
     // Odometer - any number type
-    var odometerMetadata = Odometer.getMetadata(vehicle);
+    var odometerMetadata = VehicleMetadatas.Odometer.getMetadata(vehicle);
     // lowest number allowed
     var lowest = odometerMetadata.lowerBound;
     // highest number allowed
     var highest = odometerMetadata.upperBound;
 
     // Fuel Type - an enumeration type
-    var fuelMetadata = FuelType.getMetadata(vehicle);
+    var fuelMetadata = VehicleMetadatas.FuelType.getMetadata(vehicle);
     var allowedValues = fuelMetadata.enumerationValues;
 
     // Engine Displacement - a number type
