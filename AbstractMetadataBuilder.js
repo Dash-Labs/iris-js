@@ -13,7 +13,7 @@ function AbstractMetadataBuilder(name, metadataType, unit, convertToExpected, ge
         },
         function get(container) {
             var element = this.getMetadata(container);
-            return element == null ? null : getUnitObject(convertToExpected(element.value, element.unit));
+            return element == null ? null : convertToExpected(element.value, element.unit);
         },
         function getOrDefault(container, unit) {
             var value = this.get(container);

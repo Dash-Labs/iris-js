@@ -172,7 +172,7 @@ function createVehicleForUpdate(adminUser, existingVehicle, make, model, year, n
     }
 
     if (odometer != null) {
-        builder.withOdometer(odometer, VehicleMetadatas.DistancePreference.get(adminUser));
+        builder.withOdometer(odometer, VehicleMetadatas.DistancePreference.get(adminUser).name);
     }
 
     if (fuel != null) {
@@ -184,15 +184,15 @@ function createVehicleForUpdate(adminUser, existingVehicle, make, model, year, n
     }
 
     if (cityFuelEconomy != null) {
-        builder.withCityFuelEfficiency(cityFuelEconomy, VehicleMetadatas.FuelEfficiencyPreference.get(adminUser));
+        builder.withCityFuelEfficiency(cityFuelEconomy, VehicleMetadatas.FuelEfficiencyPreference.get(adminUser).name);
     }
 
     if (highwayFuelEconomy != null) {
-        builder.withHighwayFuelEfficiency(highwayFuelEconomy, VehicleMetadatas.FuelEfficiencyPreference.get(adminUser));
+        builder.withHighwayFuelEfficiency(highwayFuelEconomy, VehicleMetadatas.FuelEfficiencyPreference.get(adminUser).name);
     }
 
     if (tankSize != null) {
-        builder.withTankSize(tankSize, VehicleMetadatas.VolumePreference.get(adminUser));
+        builder.withTankSize(tankSize, VehicleMetadatas.VolumePreference.get(adminUser).name);
     }
 
     if (oil != null) {
@@ -208,7 +208,7 @@ function createVehicleForUpdate(adminUser, existingVehicle, make, model, year, n
     }
 
     if (weight != null) {
-        builder.withWeight(engineDisplacement, VehicleMetadatas.WeightPreference.get(adminUser));
+        builder.withWeight(engineDisplacement, VehicleMetadatas.WeightPreference.get(adminUser).name);
     }
 
     if (startStop != null) {

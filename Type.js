@@ -20,8 +20,8 @@ var Regular = new Fuel("Regular", "regular gasoline", "regular");
 Object.freeze(Regular);
 var Plus = new Fuel("Plus", "plus gasoline", "plus");
 Object.freeze(Plus);
-var Premium = new Fuel("Premium", "premium gasoline", "premium");
-Object.freeze(Premium);
+var PremiumFuel = new Fuel("Premium", "premium gasoline", "premium");
+Object.freeze(PremiumFuel);
 var Diesel = new Fuel("Diesel", "diesel", "diesel");
 Object.freeze(Diesel);
 var E85 = new Fuel("E85", "ethanol 85", "E85");
@@ -35,8 +35,8 @@ Object.freeze(LPG);
 
 var Standard = new Oil("Standard", "Standard", "std");
 Object.freeze(Standard);
-var Premium = new Oil("Premium", "Premium", "prem");
-Object.freeze(Premium);
+var PremiumOil = new Oil("Premium", "Premium", "prem");
+Object.freeze(PremiumOil);
 var HighPremium = new Oil("HighPremium", "High premium", "high prem");
 Object.freeze(HighPremium);
 
