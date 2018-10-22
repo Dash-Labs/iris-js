@@ -474,7 +474,7 @@ function Electricity(name, label, abbreviation, digitLabel, convert, toAmpHour, 
     this.toMilliAmpHour = toMilliAmpHour;
 }
 
-var AmpHour = Electricity("AmpHour", "amp hour", "Ahr", "A",
+var AmpHour = new Electricity("AmpHour", "amp hour", "Ahr", "A",
     function convert(value, unit) {
         return getUnitObject(unit).toAmpHour(value);
     },
@@ -488,7 +488,7 @@ var AmpHour = Electricity("AmpHour", "amp hour", "Ahr", "A",
     });
 Object.freeze(AmpHour);
 
-var MilliAmpHour = Electricity("MilliAmpHour", "milliamp hour", "mAhr", "mA",
+var MilliAmpHour = new Electricity("MilliAmpHour", "milliamp hour", "mAhr", "mA",
     function convert(value, unit) {
         return getUnitObject(unit).toMilliAmpHour(value);
     },
@@ -536,7 +536,7 @@ var Kilograms = new Weight("Kilograms", "kilograms", "kg", "kg",
     });
 Object.freeze(Kilograms);
 
-var None = new  Unit("None", "", "", "",
+var None = new Unit("None", "", "", "",
     function convert(value, unit) {
         validateNumber(value);
         return value;

@@ -84,7 +84,7 @@ function VehicleUpdateBuilder(id) {
         return this;
     };
     this.withStartStopEngine = function withStartStopEngine(startStop) {
-        this.startStop = VehicleMetadatas.StartStop.build(id, startStop.toString(), "None");
+        this.startStop = VehicleMetadatas.StartStop.build(id, startStop, "None");
         return this;
     };
     this.withBatteryGroupSize = function withBatteryGroupSize(batteryGroupSize) {

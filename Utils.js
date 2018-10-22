@@ -5,7 +5,7 @@ function validateNumber(number) {
 }
 
 function validateBoolean(boolean) {
-    if (boolean.toLowerCase() !== "false" && boolean.toLowerCase() !== "true") {
+    if (boolean !== false && boolean !== true) {
         throw Error("Invalid parameter: boolean is expected");
     }
 }
@@ -46,7 +46,7 @@ function getEnumerationValues(enumType){
     }
 }
 
-function getUnitObject(unit) {
+function getUnitObject(unit, enumType) {
     switch (unit) {
         case "Miles":
             return Miles;
@@ -92,6 +92,166 @@ function getUnitObject(unit) {
             return Pounds;
         case "Kilograms":
             return Kilograms;
+        case "Regular":
+            return Regular;
+        case "Plus":
+            return Plus;
+        case "Premium":
+            if (enumType === "Oil") {
+                return PremiumOil
+            } else if (enumType === "Fuel") {
+                return PremiumFuel;
+            } else {
+                throw Error("Unknown unit: " + unit);
+            }
+        case "Diesel":
+            return Diesel;
+        case "E85":
+            return E85;
+        case "Electric":
+            return Electric;
+        case "CNG":
+            return CNG;
+        case "LPG":
+            return LPG;
+        case "Standard":
+            return Standard;
+        case "HighPremium":
+            return HighPremium;
+        case "BCI_21":
+            return BCI_21;
+        case "BCI_22F":
+            return BCI_22F;
+        case "BCI_22HF":
+            return BCI_22HF;
+        case "BCI_22NF":
+            return BCI_22NF;
+        case "BCI_22R":
+            return BCI_22R;
+        case "BCI_24":
+            return BCI_24;
+        case "BCI_24F":
+            return BCI_24F;
+        case "BCI_24H":
+            return BCI_24H;
+        case "BCI_24R":
+            return BCI_24R;
+        case "BCI_24T":
+            return BCI_24T;
+        case "BCI_25":
+            return BCI_25;
+        case "BCI_26":
+            return BCI_26;
+        case "BCI_26R":
+            return BCI_26R;
+        case "BCI_27":
+            return BCI_27;
+        case "BCI_27F":
+            return BCI_27F;
+        case "BCI_27H":
+            return BCI_27H;
+        case "BCI_29NF":
+            return BCI_29NF;
+        case "BCI_33":
+            return BCI_33;
+        case "BCI_34":
+            return BCI_34;
+        case "BCI_34R":
+            return BCI_34R;
+        case "BCI_35":
+            return BCI_35;
+        case "BCI_36R":
+            return BCI_36R;
+        case "BCI_40R":
+            return BCI_40R;
+        case "BCI_41":
+            return BCI_41;
+        case "BCI_42":
+            return BCI_42;
+        case "BCI_43":
+            return BCI_43;
+        case "BCI_45":
+            return BCI_45;
+        case "BCI_46":
+            return BCI_46;
+        case "BCI_47":
+            return BCI_47;
+        case "BCI_48":
+            return BCI_48;
+        case "BCI_49":
+            return BCI_49;
+        case "BCI_50":
+            return BCI_50;
+        case "BCI_51":
+            return BCI_51;
+        case "BCI_51R":
+            return BCI_51R;
+        case "BCI_52":
+            return BCI_52;
+        case "BCI_53":
+            return BCI_53;
+        case "BCI_54":
+            return BCI_54;
+        case "BCI_55":
+            return BCI_55;
+        case "BCI_56":
+            return BCI_56;
+        case "BCI_57":
+            return BCI_57;
+        case "BCI_58":
+            return BCI_58;
+        case "BCI_58R":
+            return BCI_58R;
+        case "BCI_59":
+            return BCI_59;
+        case "BCI_60":
+            return BCI_60;
+        case "BCI_61":
+            return BCI_61;
+        case "BCI_62":
+            return BCI_62;
+        case "BCI_63":
+            return BCI_63;
+        case "BCI_64":
+            return BCI_64;
+        case "BCI_65":
+            return BCI_65;
+        case "BCI_70":
+            return BCI_70;
+        case "BCI_71":
+            return BCI_71;
+        case "BCI_72":
+            return BCI_72;
+        case "BCI_73":
+            return BCI_73;
+        case "BCI_74":
+            return BCI_74;
+        case "BCI_75":
+            return BCI_75;
+        case "BCI_76":
+            return BCI_76;
+        case "BCI_78":
+            return BCI_78;
+        case "BCI_85":
+            return BCI_85;
+        case "BCI_86":
+            return BCI_86;
+        case "BCI_90":
+            return BCI_90;
+        case "BCI_91":
+            return BCI_91;
+        case "BCI_92":
+            return BCI_92;
+        case "BCI_93":
+            return BCI_93;
+        case "BCI_95R":
+            return BCI_95R;
+        case "BCI_96R":
+            return BCI_96R;
+        case "BCI_97R":
+            return BCI_97R;
+        case "BCI_98R":
+            return BCI_98R;
         case "None":
             return None;
         default:
