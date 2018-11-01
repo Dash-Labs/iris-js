@@ -26,7 +26,7 @@ function Location(id, dateTime, type, latitude, longitude, altitude, bearing,
     this.reverseGeocodingCount = reverseGeocodingCount;
 }
 
-function forUserUpdate(address) {
-    return new Location(null, null, "User", null, null, null, null, null, null, null, address, null, null, null, null,
+function forUserUpdate(id, dateTime, address) {
+    return new Location(id, dateTime, "User", null, null, null, null, null, null, null, address, null, null, null, null,
         null, String(null), null, null, null, null, null);
 }

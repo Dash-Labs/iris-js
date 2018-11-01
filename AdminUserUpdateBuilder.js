@@ -121,6 +121,6 @@ function AdminUserUpdateBuilder(id) {
         if (this.speedingThresholdPreference != null) {
             metadata.push(this.speedingThresholdPreference);
         }
-        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.address), null, null, metadata);
+        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.id, Date.now(), this.address), null, null, metadata);
     }
 }
