@@ -56,6 +56,26 @@ var UserMetadatas = {
         },
         function getDefault(unit) {
             return "en_US";
+        }),
+    IdlingThresholdPreference: new AbstractDoubleMetadataBuilder("IdlingThresholdPreference", "Speed",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(20, "MilesPerHour");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(1, "MilesPerHour");
+        },
+        function getDefault(unit) {
+            return 4;
+        }),
+    SpeedingThresholdPreference: new AbstractDoubleMetadataBuilder("SpeedingThresholdPreference", "Speed",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(150, "MilesPerHour");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(50, "MilesPerHour");
+        },
+        function getDefault(unit) {
+            return 80;
         })
 };
 
