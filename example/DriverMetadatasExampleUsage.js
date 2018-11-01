@@ -68,6 +68,12 @@ function getMetadata(driver) {
     var electricityAbbreviation = electricity.abbreviation;
     var electricityDigitLabel = electricity.digitLabel;
 
+    // Idling preference
+    var idling = UserMetadatas.IdlingThresholdPreference.get(driver);
+
+    // Speeding preference
+    var speeding = UserMetadatas.SpeedingThresholdPreference.get(driver);
+
 }
 
 function getMetadataValuesForUpdate(driver) {
@@ -109,12 +115,27 @@ function getMetadataValuesForUpdate(driver) {
     // Electricity preference - an enumeration type
     var electricity = UserMetadatas.ElectricityPreference.getMetadata(driver);
     var allowedValues = pressure.enumerationValues;
+
+    // Idling - any number type
+    var idlingMetadata = UserMetadatas.IdlingThresholdPreference.getMetadata(driver);
+    // lowest number allowed
+    var lowest = idlingMetadata.lowerBound;
+    // highest number allowed
+    var highest = idlingMetadata.upperBound;
+
+    // Speeding - any number type
+    var speedingMetadata = UserMetadatas.SpeedingThresholdPreference.getMetadata(driver);
+    // lowest number allowed
+    var lowest = speedingMetadata.lowerBound;
+    // highest number allowed
+    var highest = speedingMetadata.upperBound;
 }
 
 function createDriverForUpdate(existingDriver, name, email, phoneNumber, timeZone,
                                locale, distancePreference, fuelEfficiencyPreference, speedPreference,
                                temperaturePreference, volumePreference, weightPreference,
-                               pressurePreference, electricityPreference) {
+                               pressurePreference, electricityPreference, idlingThreshold, idlingUnit,
+                               speedingThreshold, speedingUnit) {
     var builder = new DriverUpdateBuilder(existingDriver);
 
     if ((name != null) && (name !== existingDriver.name)) {
@@ -167,6 +188,14 @@ function createDriverForUpdate(existingDriver, name, email, phoneNumber, timeZon
 
     if (electricityPreference != null) {
         builder.withElectricityPreference(electricityPreference);
+    }
+
+    if (idlingThreshold != null) {
+        builder.withIdlingThresholdPreference(idlingThreshold, idlingUnit);
+    }
+
+    if (speedingThreshold != null) {
+        builder.withSpeedingThresholdPreference(speedingThreshold, speedingUnit);
     }
 
     return builder.buildUpdate();

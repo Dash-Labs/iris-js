@@ -62,6 +62,12 @@ function getMetadata(adminUser) {
     var electricityAbbreviation = electricity.abbreviation;
     var electricityDigitLabel = electricity.digitLabel;
 
+    // Idling preference
+    var idling = UserMetadatas.IdlingThresholdPreference.get(adminUser);
+
+    // Speeding preference
+    var speeding = UserMetadatas.SpeedingThresholdPreference.get(adminUser);
+
 }
 
 function getMetadataValuesForUpdate(adminUser) {
@@ -109,12 +115,26 @@ function getMetadataValuesForUpdate(adminUser) {
     // Electricity preference - an enumeration type
     var electricity = UserMetadatas.ElectricityPreference.getMetadata(adminUser);
     var allowedValues = pressure.enumerationValues;
+
+    // Idling - any number type
+    var idlingMetadata = UserMetadatas.IdlingThresholdPreference.getMetadata(adminUser);
+    // lowest number allowed
+    var lowest = idlingMetadata.lowerBound;
+    // highest number allowed
+    var highest = idlingMetadata.upperBound;
+
+    // Speeding - any number type
+    var speedingMetadata = UserMetadatas.SpeedingThresholdPreference.getMetadata(adminUser);
+    // lowest number allowed
+    var lowest = speedingMetadata.lowerBound;
+    // highest number allowed
+    var highest = speedingMetadata.upperBound;
 }
 
 function createAdminUserForUpdate(existingAdminUser, name, companyName, phoneNumber, address, timeZone,
                                   locale, distancePreference, fuelEfficiencyPreference, speedPreference,
                                   temperaturePreference, volumePreference, weightPreference, pressurePreference,
-                                  electricityPreference) {
+                                  electricityPreference, idlingThreshold, idlingUnit, speedingThreshold, speedingUnit) {
     var builder = new AdminUserUpdateBuilder(existingAdminUser.id);
 
     if ((name != null) && (name !== existingAdminUser.name)) {
@@ -171,6 +191,14 @@ function createAdminUserForUpdate(existingAdminUser, name, companyName, phoneNum
 
     if (electricityPreference != null) {
         builder.withElectricityPreference(electricityPreference);
+    }
+
+    if (idlingThreshold != null) {
+        builder.withIdlingThresholdPreference(idlingThreshold, idlingUnit);
+    }
+
+    if (speedingThreshold != null) {
+        builder.withSpeedingThresholdPreference(speedingThreshold, speedingUnit);
     }
 
     return builder.buildUpdate();

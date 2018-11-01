@@ -17,6 +17,8 @@ function AdminUserUpdateBuilder(id) {
     this.speedPreference = null;
     this.timeZonePreference = null;
     this.localePreference = null;
+    this.idlingThresholdPreference = null;
+    this.speedingThresholdPreference = null;
     this.withName = function(name) {
         this.name = name;
         return this;
@@ -73,6 +75,14 @@ function AdminUserUpdateBuilder(id) {
         this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "None");
         return this;
     };
+    this.withIdlingThresholdPreference = function(idlingThresholdPreference, idlingUnit) {
+        this.idlingThresholdPreference = UserMetadatas.IdlingThresholdPreference.build(id, idlingThresholdPreference, idlingUnit);
+        return this;
+    };
+    this.withSpeedingThresholdPreference = function(speedingThresholdPreference, speedingUnit) {
+        this.speedingThresholdPreference = UserMetadatas.SpeedingThresholdPreference.build(id, speedingThresholdPreference, speedingUnit);
+        return this;
+    };
     this.buildUpdate = function() {
         var metadata = new Array(8);
         if (this.distancePreference != null) {
@@ -105,6 +115,12 @@ function AdminUserUpdateBuilder(id) {
         if (this.localePreference != null) {
             metadata.push(this.localePreference);
         }
-        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.address), null, null, metadata);
+        if (this.idlingThresholdPreference != null) {
+            metadata.push(this.idlingThresholdPreference);
+        }
+        if (this.speedingThresholdPreference != null) {
+            metadata.push(this.speedingThresholdPreference);
+        }
+        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.id, Date.now(), this.address), null, null, metadata);
     }
 }
