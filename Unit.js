@@ -219,7 +219,7 @@ function FuelEfficiency(name, label, abbreviation, digitLabel, distance, volume,
     this.toLitersPer10Kilometer = toLitersPer10Kilometer;
 }
 
-var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "liters per 100km", "l/100km", "l/100km",
+var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "miles per gallon", "mpg", "mpg",
     Miles, USGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toMilesPerUSGallon(fuelEfficiency);
