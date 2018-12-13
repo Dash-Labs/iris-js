@@ -23,6 +23,7 @@ function VehicleUpdateBuilder(id) {
     this.batteryColdCrankingAmps = null;
     this.horsePower = null;
     this.oilType = null;
+    this.licensePlate = null;
     this.withDefaultDriverId = function withDefaultDriverId(defaultDriverId) {
         this.defaultDriverId = defaultDriverId;
         return this;
@@ -103,6 +104,10 @@ function VehicleUpdateBuilder(id) {
         this.oilType = VehicleMetadatas.OilType.build(id, oilType, "None");
         return this;
     };
+    this.withLicensePlate = function withLicensePlate(licensePlate) {
+        this.licensePlate = VehicleMetadatas.LicensePlate.build(id, licensePlate, "None");
+        return this;
+    };
     this.buildUpdate = function() {
         var metadata = new Array(14);
         if (this.odometer != null) {
@@ -146,6 +151,9 @@ function VehicleUpdateBuilder(id) {
         }
         if (this.oilType != null) {
             metadata.push(this.oilType);
+        }
+        if (this.licensePlate != null) {
+            metadata.push(this.licensePlate);
         }
         return new Vehicle(this.id, null, this.defaultDriverId, this.vin, this.name, this.make,
             this.model, this.year, null, null, null, metadata, null);

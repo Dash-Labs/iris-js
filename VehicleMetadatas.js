@@ -114,6 +114,13 @@ var VehicleMetadatas = {
     OilType: new AbstractEnumMetadataBuilder("OilType", "Oil", "None",
         function getDefault(unit) {
             return "Standard";
+        }),
+    LicensePlate: new AbstractMetadataBuilder("LicensePlate", "Text", "None",
+        function convertToExpected(value, unit) {
+            return value;
+        },
+        function getDefault(unit) {
+            return "";
         })
 };
 
