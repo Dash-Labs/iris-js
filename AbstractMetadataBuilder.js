@@ -40,6 +40,9 @@ function AbstractMetadataBuilder(name, metadataType, unit, convertToExpected, ge
     this.getEnumerationValues = function getEnumerationValues() {
         return null;
     };
+    this.getEnumerationDisplayValues = function getEnumerationDisplayValues() {
+        return null;
+    };
     this.getUpperBound = function getUpperBound(unit) {
         return null;
     };

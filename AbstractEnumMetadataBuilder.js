@@ -11,4 +11,17 @@ function AbstractEnumMetadataBuilder(name, enumType, unit, getDefault) {
     this.getEnumerationValues = function() {
         return getEnumerationValues(enumType);
     };
+    this.getEnumerationDisplayValues = function() {
+        let enumDisplays = [];
+        let enumValues = getEnumerationValues(enumType);
+        for (enumValue in enumValues) {
+            let unitObject = getUnitObject(enumValue, enumType);
+            let label = unitObject.name;
+            if (unitObject instanceof Type) {
+                label = unitObject.label;
+            }
+            enumDisplays.push(new EnumDisplay(label, enumValue));
+        }
+        return enumDisplays;
+    };
 }
