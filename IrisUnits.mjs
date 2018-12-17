@@ -561,28 +561,28 @@ function BatteryGroupSize(name, label, abbreviation) {
     Type.call(this, name, label, abbreviation);
 }
 
-export var Regular = new Fuel("Regular", "regular gasoline", "regular");
+export var Regular = new Fuel("Regular", "Regular Gasoline", "regular");
 Object.freeze(Regular);
-export var Plus = new Fuel("Plus", "plus gasoline", "plus");
+export var Plus = new Fuel("Plus", "Plus Gasoline", "plus");
 Object.freeze(Plus);
-export var PremiumFuel = new Fuel("Premium", "premium gasoline", "premium");
+export var PremiumFuel = new Fuel("Premium", "Premium Gasoline", "premium");
 Object.freeze(PremiumFuel);
-export var Diesel = new Fuel("Diesel", "diesel", "diesel");
+export var Diesel = new Fuel("Diesel", "Diesel", "diesel");
 Object.freeze(Diesel);
-export var E85 = new Fuel("E85", "ethanol 85", "E85");
+export var E85 = new Fuel("E85", "Ethanol 85", "E85");
 Object.freeze(E85);
-export var Electric = new Fuel("Electric", "electric", "electric");
+export var Electric = new Fuel("Electric", "Electric", "electric");
 Object.freeze(Electric);
-export var CNG = new Fuel("CNG", "compressed natural gas", "CNG");
+export var CNG = new Fuel("CNG", "Compressed Natural Gas", "CNG");
 Object.freeze(CNG);
-export var LPG = new Fuel("LPG", "liquefied petroleum gasoline", "LPG");
+export var LPG = new Fuel("LPG", "Liquefied Petroleum Gasoline", "LPG");
 Object.freeze(LPG);
 
 export var Standard = new Oil("Standard", "Standard", "std");
 Object.freeze(Standard);
 export var PremiumOil = new Oil("Premium", "Premium", "prem");
 Object.freeze(PremiumOil);
-export var HighPremium = new Oil("HighPremium", "High premium", "high prem");
+export var HighPremium = new Oil("HighPremium", "High Premium", "high prem");
 Object.freeze(HighPremium);
 
 export var BCI_21 = new BatteryGroupSize("BCI_21", "21", "21");
