@@ -536,6 +536,74 @@ export var Kilograms = new Weight("Kilograms", "Kilograms", "kg", "kg",
     });
 Object.freeze(Kilograms);
 
+function Time(name, label, abbreviation, digitLabel, convert, toMilliseconds, toSeconds, toMinutes, toHours) {
+    Unit.call(this, name, label, abbreviation, digitLabel, convert);
+    this.toMilliseconds = toMilliseconds;
+    this.toSeconds = toSeconds;
+    this.toMinutes = toMinutes;
+    this.toHours = toHours;
+}
+
+export var Milliseconds = new Time("Milliseconds", "ms", "ms",
+    function toMilliseconds(time) {
+        return time;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time / 1000;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time / (1000 * 60);
+    },
+    function toHours(time) {
+        return time == null ? null : time / (1000 * 60 * 60);
+    });
+Object.freeze(Milliseconds);
+
+export var Seconds = new Time("Seconds", "sec", "s",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000;
+    },
+    function toSeconds(time) {
+        return time;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time / 60;
+    },
+    function toHours(time) {
+        return time == null ? null : time / (60 * 60);
+    });
+Object.freeze(Seconds);
+
+export var Minutes = new Time("Minutes", "min", "m",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000 * 60;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time * 60;
+    },
+    function toMinutes(time) {
+        return time;
+    },
+    function toHours(time) {
+        return time == null ? null : time / 60;
+    });
+Object.freeze(Minutes);
+
+export var Hours = new Time("Hours", "hr", "h",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000 * 60 * 60;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time * 60 * 60;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time * 60;
+    },
+    function toHours(time) {
+        return time;
+    });
+Object.freeze(Hours);
+
 export var None = new Unit("None", "", "", "",
     function convert(value, unit) {
         validateNumber(value);
