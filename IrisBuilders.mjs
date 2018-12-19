@@ -36,7 +36,7 @@ export function AbstractMetadataBuilder(name, metadataType, unit, convertToExpec
             if (id == null || id.length === 0) {
                 throw new Error("id cannot be null or empty");
             }
-            return new Metadata(id + "::" + name, name, value, this.getType(), this.getEnumerationValues(), this.getLowerBound(unit),
+            return new Metadata(id + "::" + name, name, value, this.valueToDisplayString(value), this.getType(), this.getEnumerationValues(), this.getLowerBound(unit),
                 this.getUpperBound(unit), this.getUnitType(), getUnitObject(unit).name);
         });
     this.name = name;
@@ -46,6 +46,9 @@ export function AbstractMetadataBuilder(name, metadataType, unit, convertToExpec
         return getDisplayName(name);
     };
     this.convertToExpected = convertToExpected;
+    this.valueToDisplayString = function valueToDisplayString(value) {
+        return value;
+    };
     this.getType = function() {
         return metadataType;
     };
@@ -78,7 +81,7 @@ export function AbstractBooleanMetadataBuilder(name, unit, getDefault) {
         }, getDefault);
 }
 
-export function AbstractDoubleMetadataBuilder(name, unit, getUpperBound, getLowerBound, getDefault) {
+export function AbstractDoubleMetadataBuilder(name, unit, getUpperBound, getLowerBound, getDefault, getDecimalsForDisplay) {
     AbstractMetadataBuilder.call(this, name, "Number", unit,
         function convertToExpected(value, unit) {
             if (value != null && value.length !== 0) {
@@ -88,6 +91,14 @@ export function AbstractDoubleMetadataBuilder(name, unit, getUpperBound, getLowe
                 return getDefault(unit);
             }
         }, getDefault);
+    this.valueToDisplayString = function valueToDisplayString(value) {
+        if (value != null && value.length !== 0) {
+            validateNumber(value);
+            return parseFloat(value).toFixed(getDecimalsForDisplay());
+        } else {
+            return "";
+        }
+    };
     this.getUpperBound = getUpperBound;
     this.getLowerBound = getLowerBound;
 }
