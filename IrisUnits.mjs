@@ -12,7 +12,7 @@ function Distance(name, label, abbreviation, digitLabel, convert, toMiles, toKil
     this.toKilometers = toKilometers;
 }
 
-export var Miles = new Distance("Miles", "miles", "mi", "m",
+export var Miles = new Distance("Miles", "Miles", "mi", "m",
     function convert(distance, unit) {
         return getUnitObject(unit).toMiles(distance);
     },
@@ -26,7 +26,7 @@ export var Miles = new Distance("Miles", "miles", "mi", "m",
     });
 Object.freeze(Miles);
 
-export var Kilometers = new Distance("Kilometers", "kilometers", "km", "k",
+export var Kilometers = new Distance("Kilometers", "Kilometers", "km", "k",
     function convert(distance, unit) {
         return getUnitObject(unit).toKilometers(distance);
     },
@@ -82,7 +82,7 @@ function Volume(name, label, abbreviation, digitLabel, convert, toCubicFoot, toL
     this.toImperialGallons = toImperialGallons;
 }
 
-export var CubicFoot = new Volume("CubicFoot", "cubic foot", "cu ft", "cf",
+export var CubicFoot = new Volume("CubicFoot", "Cubic Foot", "cu ft", "cf",
     function convert(capacity, unit) {
         return getUnitObject(unit).toCubicFoot(capacity);
     },
@@ -104,7 +104,7 @@ export var CubicFoot = new Volume("CubicFoot", "cubic foot", "cu ft", "cf",
     });
 Object.freeze(CubicFoot);
 
-export var Liters = new Volume("Liters", "liter", "l", "l",
+export var Liters = new Volume("Liters", "Liter", "l", "l",
     function convert(capacity, unit) {
         return getUnitObject(unit).toLiters(capacity);
     },
@@ -126,7 +126,7 @@ export var Liters = new Volume("Liters", "liter", "l", "l",
     });
 Object.freeze(Liters);
 
-export var USGallons = new Volume("USGallons", "us gallon", "gal", "g",
+export var USGallons = new Volume("USGallons", "US Gallon", "gal", "g",
     function convert(capacity, unit) {
         return getUnitObject(unit).toUSGallons(capacity);
     },
@@ -148,7 +148,7 @@ export var USGallons = new Volume("USGallons", "us gallon", "gal", "g",
     });
 Object.freeze(USGallons);
 
-export var ImperialGallons = new Volume("ImperialGallons", "imperial gallon", "gal", "g",
+export var ImperialGallons = new Volume("ImperialGallons", "Imperial Gallon", "gal", "g",
     function convert(capacity, unit) {
         return getUnitObject(unit).toImperialGallons(capacity);
     },
@@ -176,7 +176,7 @@ function Pressure(name, label, abbreviation, digitLabel, convert, toPoundsPerSqu
     this.toKilopascals = toKilopascals;
 }
 
-export var PoundsPerSquareInch = new Pressure("PoundsPerSquareInch", "pounds per square inch", "psi", "p",
+export var PoundsPerSquareInch = new Pressure("PoundsPerSquareInch", "PSI", "psi", "p",
     function convert(pressure, unit) {
         return getUnitObject(unit).toPoundsPerSquareInch(pressure);
     },
@@ -190,7 +190,7 @@ export var PoundsPerSquareInch = new Pressure("PoundsPerSquareInch", "pounds per
     });
 Object.freeze(PoundsPerSquareInch);
 
-export var Kilopascals = new Pressure("Kilopascals", "kilopascal", "kPa", "k",
+export var Kilopascals = new Pressure("Kilopascals", "kPa", "kPa", "k",
     function convert(pressure, unit) {
         return getUnitObject(unit).toKilopascals(pressure);
     },
@@ -219,7 +219,7 @@ function FuelEfficiency(name, label, abbreviation, digitLabel, distance, volume,
     this.toLitersPer10Kilometer = toLitersPer10Kilometer;
 }
 
-export var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "miles per gallon", "mpg", "mpg",
+export var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "MPG", "mpg", "mpg",
     Miles, USGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toMilesPerUSGallon(fuelEfficiency);
@@ -245,7 +245,7 @@ export var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "miles per 
     });
 Object.freeze(MilesPerUSGallon);
 
-export var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "miles per imperial gallon", "mpg", "mpg",
+export var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "MPG", "mpg", "mpg",
     Miles, ImperialGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toMilesPerImperialGallon(fuelEfficiency);
@@ -272,7 +272,7 @@ export var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon",
     });
 Object.freeze(MilesPerImperialGallon);
 
-export var KilometersPerLiter = new FuelEfficiency("KilometersPerLiter", "kilometers per liter", "kpl", "kpl",
+export var KilometersPerLiter = new FuelEfficiency("KilometersPerLiter", "KPL", "kpl", "kpl",
     Kilometers, Liters, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toKilometersPerLiter(fuelEfficiency);
@@ -299,7 +299,7 @@ export var KilometersPerLiter = new FuelEfficiency("KilometersPerLiter", "kilome
     });
 Object.freeze(KilometersPerLiter);
 
-export var LitersPer100Kilometer = new FuelEfficiency("LitersPer100Kilometer", "liters per 100km", "l/100km", "l/100km",
+export var LitersPer100Kilometer = new FuelEfficiency("LitersPer100Kilometer", "L/100KM", "l/100km", "l/100km",
     Kilometers, Liters, "VolumeOverDistance", 100,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toLitersPer100Kilometer(fuelEfficiency);
@@ -326,7 +326,7 @@ export var LitersPer100Kilometer = new FuelEfficiency("LitersPer100Kilometer", "
     });
 Object.freeze(LitersPer100Kilometer);
 
-export var LitersPer10Kilometer = new FuelEfficiency("LitersPer10Kilometer", "liters per 10km", "l/10km", "l/10km",
+export var LitersPer10Kilometer = new FuelEfficiency("LitersPer10Kilometer", "L/10KM", "l/10km", "l/10km",
     Kilometers, Liters, "VolumeOverDistance", 10,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toLitersPer10Kilometer(fuelEfficiency);
@@ -414,7 +414,7 @@ function Speed(name, label, abbreviation, digitLabel, convert, toMilesPerHour, t
     this.toMetersPerSecond = toMetersPerSecond;
 }
 
-export var MilesPerHour = new Speed("MilesPerHour", "miles per hour", "mph", "m/h",
+export var MilesPerHour = new Speed("MilesPerHour", "MPH", "mph", "m/h",
     function convert(speed, unit) {
         return getUnitObject(unit).toMilesPerHour(speed);
     },
@@ -432,7 +432,7 @@ export var MilesPerHour = new Speed("MilesPerHour", "miles per hour", "mph", "m/
     });
 Object.freeze(MilesPerHour);
 
-export var KilometerPerHour = new Speed("KilometerPerHour", "kilometers per hour", "kph", "k/h",
+export var KilometerPerHour = new Speed("KilometerPerHour", "KPH", "kph", "k/h",
     function convert(speed, unit) {
         return getUnitObject(unit).toKilometerPerHour(speed);
     },
@@ -450,7 +450,7 @@ export var KilometerPerHour = new Speed("KilometerPerHour", "kilometers per hour
     });
 Object.freeze(KilometerPerHour);
 
-export var MetersPerSecond = new Speed("MetersPerSecond", "meters per second", "mss", "m/s",
+export var MetersPerSecond = new Speed("MetersPerSecond", "MPS", "mss", "m/s",
     function convert(speed, unit) {
         return getUnitObject(unit).toMetersPerSecond(speed);
     },
@@ -474,7 +474,7 @@ function Electricity(name, label, abbreviation, digitLabel, convert, toAmpHour, 
     this.toMilliAmpHour = toMilliAmpHour;
 }
 
-export var AmpHour = new Electricity("AmpHour", "amp hour", "Ahr", "A",
+export var AmpHour = new Electricity("AmpHour", "Amp Hours", "Ahr", "A",
     function convert(value, unit) {
         return getUnitObject(unit).toAmpHour(value);
     },
@@ -488,7 +488,7 @@ export var AmpHour = new Electricity("AmpHour", "amp hour", "Ahr", "A",
     });
 Object.freeze(AmpHour);
 
-export var MilliAmpHour = new Electricity("MilliAmpHour", "milliamp hour", "mAhr", "mA",
+export var MilliAmpHour = new Electricity("MilliAmpHour", "Milliamp Hours", "mAhr", "mA",
     function convert(value, unit) {
         return getUnitObject(unit).toMilliAmpHour(value);
     },
@@ -508,7 +508,7 @@ function Weight(name, label, abbreviation, digitLabel, convert, toPounds, toKilo
     this.toKilograms = toKilograms;
 }
 
-export var Pounds = new Weight("Pounds", "pounds", "lbs", "lb",
+export var Pounds = new Weight("Pounds", "Pounds", "lbs", "lb",
     function convert(weight, unit) {
         return getUnitObject(unit).toKilograms(weight);
     },
@@ -522,7 +522,7 @@ export var Pounds = new Weight("Pounds", "pounds", "lbs", "lb",
     });
 Object.freeze(Pounds);
 
-export var Kilograms = new Weight("Kilograms", "kilograms", "kg", "kg",
+export var Kilograms = new Weight("Kilograms", "Kilograms", "kg", "kg",
     function convert(weight, unit) {
         return getUnitObject(unit).toPounds(weight);
     },
@@ -535,6 +535,74 @@ export var Kilograms = new Weight("Kilograms", "kilograms", "kg", "kg",
         return weight;
     });
 Object.freeze(Kilograms);
+
+function Time(name, label, abbreviation, digitLabel, convert, toMilliseconds, toSeconds, toMinutes, toHours) {
+    Unit.call(this, name, label, abbreviation, digitLabel, convert);
+    this.toMilliseconds = toMilliseconds;
+    this.toSeconds = toSeconds;
+    this.toMinutes = toMinutes;
+    this.toHours = toHours;
+}
+
+export var Milliseconds = new Time("Milliseconds", "ms", "ms",
+    function toMilliseconds(time) {
+        return time;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time / 1000;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time / (1000 * 60);
+    },
+    function toHours(time) {
+        return time == null ? null : time / (1000 * 60 * 60);
+    });
+Object.freeze(Milliseconds);
+
+export var Seconds = new Time("Seconds", "sec", "s",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000;
+    },
+    function toSeconds(time) {
+        return time;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time / 60;
+    },
+    function toHours(time) {
+        return time == null ? null : time / (60 * 60);
+    });
+Object.freeze(Seconds);
+
+export var Minutes = new Time("Minutes", "min", "m",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000 * 60;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time * 60;
+    },
+    function toMinutes(time) {
+        return time;
+    },
+    function toHours(time) {
+        return time == null ? null : time / 60;
+    });
+Object.freeze(Minutes);
+
+export var Hours = new Time("Hours", "hr", "h",
+    function toMilliseconds(time) {
+        return time == null ? null : time * 1000 * 60 * 60;
+    },
+    function toSeconds(time) {
+        return time == null ? null : time * 60 * 60;
+    },
+    function toMinutes(time) {
+        return time == null ? null : time * 60;
+    },
+    function toHours(time) {
+        return time;
+    });
+Object.freeze(Hours);
 
 export var None = new Unit("None", "", "", "",
     function convert(value, unit) {
@@ -561,28 +629,28 @@ function BatteryGroupSize(name, label, abbreviation) {
     Type.call(this, name, label, abbreviation);
 }
 
-export var Regular = new Fuel("Regular", "regular gasoline", "regular");
+export var Regular = new Fuel("Regular", "Regular Gasoline", "regular");
 Object.freeze(Regular);
-export var Plus = new Fuel("Plus", "plus gasoline", "plus");
+export var Plus = new Fuel("Plus", "Plus Gasoline", "plus");
 Object.freeze(Plus);
-export var PremiumFuel = new Fuel("Premium", "premium gasoline", "premium");
+export var PremiumFuel = new Fuel("Premium", "Premium Gasoline", "premium");
 Object.freeze(PremiumFuel);
-export var Diesel = new Fuel("Diesel", "diesel", "diesel");
+export var Diesel = new Fuel("Diesel", "Diesel", "diesel");
 Object.freeze(Diesel);
-export var E85 = new Fuel("E85", "ethanol 85", "E85");
+export var E85 = new Fuel("E85", "Ethanol 85", "E85");
 Object.freeze(E85);
-export var Electric = new Fuel("Electric", "electric", "electric");
+export var Electric = new Fuel("Electric", "Electric", "electric");
 Object.freeze(Electric);
-export var CNG = new Fuel("CNG", "compressed natural gas", "CNG");
+export var CNG = new Fuel("CNG", "Compressed Natural Gas", "CNG");
 Object.freeze(CNG);
-export var LPG = new Fuel("LPG", "liquefied petroleum gasoline", "LPG");
+export var LPG = new Fuel("LPG", "Liquefied Petroleum Gasoline", "LPG");
 Object.freeze(LPG);
 
 export var Standard = new Oil("Standard", "Standard", "std");
 Object.freeze(Standard);
 export var PremiumOil = new Oil("Premium", "Premium", "prem");
 Object.freeze(PremiumOil);
-export var HighPremium = new Oil("HighPremium", "High premium", "high prem");
+export var HighPremium = new Oil("HighPremium", "High Premium", "high prem");
 Object.freeze(HighPremium);
 
 export var BCI_21 = new BatteryGroupSize("BCI_21", "21", "21");
