@@ -65,6 +65,9 @@ export var UserMetadatas = {
         },
         function getDefault(unit) {
             return 4;
+        },
+        function getDecimalsForDisplay() {
+            return 0;
         }),
     SpeedingThresholdPreference: new AbstractDoubleMetadataBuilder("SpeedingThresholdPreference", "Speed",
         function getUpperBound(unit) {
@@ -75,6 +78,69 @@ export var UserMetadatas = {
         },
         function getDefault(unit) {
             return 80;
+        },
+        function getDecimalsForDisplay() {
+            return 0;
+        }),
+    LowFuelThresholdPreference: new AbstractDoubleMetadataBuilder("LowFuelThresholdPreference", "None",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(99, "None");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(1, "None");
+        },
+        function getDefault(unit) {
+            return 20;
+        },
+        function getDecimalsForDisplay() {
+            return 0;
+        }),
+    LongDriveTimeThresholdPreference: new AbstractDoubleMetadataBuilder("LongDriveTimeThresholdPreference", "Time",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(8, "Hours");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(1, "Minutes");
+        },
+        function getDefault(unit) {
+            return getUnitObject(unit).convert(2, "Hours");
+        },
+        function getDecimalsForDisplay() {
+            return 0;
+        }),
+    NightDriveTimeThresholdPreference: new AbstractDoubleMetadataBuilder("NightDriveTimeThresholdPreference", "Time",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(6, "Hours");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(1, "Minutes");
+        },
+        function getDefault(unit) {
+            return getUnitObject(unit).convert(1, "Hours");
+        },
+        function getDecimalsForDisplay() {
+            return 0;
+        }),
+    AmbientTemperatureThresholdPreference: new AbstractDoubleMetadataBuilder("AmbientTemperatureThresholdPreference", "Time",
+        function getUpperBound(unit) {
+            return getUnitObject(unit).convert(150, "Fahrenheit");
+        },
+        function getLowerBound(unit) {
+            return getUnitObject(unit).convert(-100, "Fahrenheit");
+        },
+        function getDefault(unit) {
+            return getUnitObject(unit).convert(31, "Fahrenheit");
+        },
+        function getDecimalsForDisplay() {
+            return 0;
+        }),
+    MigrationInProgress: new AbstractBooleanMetadataBuilder("MigrationInProgress", "None",
+        function getDefault(unit) {
+            return false;
+        }),
+    SubscriptionActive: new AbstractBooleanMetadataBuilder("SubscriptionActive", "None",
+        function getDefault(unit) {
+            return false;
         })
 };
 
