@@ -543,10 +543,10 @@ export function DriverUpdateBuilder(id) {
 }
 
 function getDisplayName(name) {
-    return getDisplayName(name, false);
+    return getDisplayNameWithCapitalize(name, false);
 }
 
-function getDisplayName(name, onlyFirstCapitalize) {
+function getDisplayNameWithCapitalize(name, onlyFirstCapitalize) {
     if (name == null || name.length === 0) {
         return name;
     }
