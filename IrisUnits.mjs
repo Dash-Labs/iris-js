@@ -245,7 +245,7 @@ export var MilesPerUSGallon = new FuelEfficiency("MilesPerUSGallon", "MPG", "mpg
     });
 Object.freeze(MilesPerUSGallon);
 
-export var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "MPG", "mpg", "mpg",
+export var MilesPerImperialGallon = new FuelEfficiency("MilesPerImperialGallon", "MPG (imperial)", "mpg", "mpg",
     Miles, ImperialGallons, "DistanceOverVolume", 1,
     function convert(fuelEfficiency, unit) {
         return getUnitObject(unit).toMilesPerImperialGallon(fuelEfficiency);
