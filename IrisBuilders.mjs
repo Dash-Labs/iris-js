@@ -10,7 +10,7 @@ function MetadataBuilder(getMetadata, get, getOrDefault, getDefault, build) {
     this.build = build;
 }
 
-export function AbstractMetadataBuilder(name, metadataType, unit, convertToExpected, getDefault) {
+export function AbstractMetadataBuilder(name, metadataType, unitType, convertToExpected, getDefault) {
     MetadataBuilder.call(this,
         function getMetadata(container) {
             if (container == null || container.metadata == null || container.metadata.length === 0) {
@@ -37,7 +37,7 @@ export function AbstractMetadataBuilder(name, metadataType, unit, convertToExpec
                 throw new Error("id cannot be null or empty");
             }
             return new Metadata(id + "::" + name, name, value, this.valueToDisplayString(value), this.getType(), this.getEnumerationValues(), this.getLowerBound(unit),
-                this.getUpperBound(unit), this.getUnitType(), getUnitObject(unit).name);
+                this.getUpperBound(unit), this.getUnitType(), unit);
         });
     this.name = name;
     this.metadatType = metadataType;
@@ -65,12 +65,12 @@ export function AbstractMetadataBuilder(name, metadataType, unit, convertToExpec
         return null;
     };
     this.getUnitType = function getUnitType() {
-        return unit;
+        return unitType;
     };
 }
 
-export function AbstractBooleanMetadataBuilder(name, unit, getDefault) {
-    AbstractMetadataBuilder.call(this, name, "Boolean", unit,
+export function AbstractBooleanMetadataBuilder(name, unitType, getDefault) {
+    AbstractMetadataBuilder.call(this, name, "Boolean", unitType,
         function convertToExpected(value, unit) {
             if (value != null && value.length !== 0) {
                 validateBoolean(value);
@@ -81,8 +81,8 @@ export function AbstractBooleanMetadataBuilder(name, unit, getDefault) {
         }, getDefault);
 }
 
-export function AbstractDoubleMetadataBuilder(name, unit, getUpperBound, getLowerBound, getDefault, getDecimalsForDisplay) {
-    AbstractMetadataBuilder.call(this, name, "Number", unit,
+export function AbstractDoubleMetadataBuilder(name, unitType, getUpperBound, getLowerBound, getDefault, getDecimalsForDisplay) {
+    AbstractMetadataBuilder.call(this, name, "Number", unitType,
         function convertToExpected(value, unit) {
             if (value != null && value.length !== 0) {
                 validateNumber(value);
@@ -103,13 +103,13 @@ export function AbstractDoubleMetadataBuilder(name, unit, getUpperBound, getLowe
     this.getLowerBound = getLowerBound;
 }
 
-export function AbstractEnumMetadataBuilder(name, enumType, unit, getDefault) {
-    AbstractMetadataBuilder.call(this, name, "Enumeration", unit,
+export function AbstractEnumMetadataBuilder(name, enumType, unitType, getDefault) {
+    AbstractMetadataBuilder.call(this, name, "Enumeration", unitType,
         function convertToExpected(value, unit) {
             if (value != null && value.length !== 0) {
                 return getUnitObject(value, enumType);
             } else {
-                return getUnitObject(getDefault(unit));
+                return getUnitObject(getDefault(unit), enumType);
             }
         }, getDefault);
     this.enumType = enumType;
