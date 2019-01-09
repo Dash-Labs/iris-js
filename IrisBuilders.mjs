@@ -307,41 +307,69 @@ export function VehicleUpdateBuilder(id) {
         this.year = year;
         return this;
     };
-    this.withOdometer = function withOdometer(odometer, distanceUnit) {
+    this.withOdometerOfUnit = function withOdometerOfUnit(odometer, distanceUnit) {
         this.odometer = VehicleMetadatas.Odometer.build(id, odometer, distanceUnit);
         return this;
     };
-    this.withTankSize = function withTankSize(tankSize, volumeUnit) {
+    this.withOdometer = function withOdometer(odometer, user) {
+        var distanceUnit = UserMetadatas.DistancePreference.getOrDefault(user, "Instance");
+        return this.withOdometerOfUnit(odometer, distanceUnit);
+    };
+    this.withTankSizeOfUnit = function withTankSizeOfUnit(tankSize, volumeUnit) {
         this.tankSize = VehicleMetadatas.TankSize.build(id, tankSize, volumeUnit);
         return this;
+    };
+    this.withTankSize = function withTankSize(tankSize, user) {
+        var volumeUnit = UserMetadatas.VolumePreference.getOrDefault(user, "Instance");
+        return this.withTankSizeOfUnit(tankSize, volumeUnit);
     };
     this.withFuelType = function withFuelType(fuel) {
         this.fuelType = VehicleMetadatas.FuelType.build(id, fuel, "None");
         return this;
     };
-    this.withEngineDisplacement = function withEngineDisplacement(engineDisplacement, volumeUnit) {
+    this.withEngineDisplacementOfUnit = function withEngineDisplacementOfUnit(engineDisplacement, volumeUnit) {
         this.engineDisplacement = VehicleMetadatas.EngineDisplacement.build(id, engineDisplacement, volumeUnit);
         return this;
     };
-    this.withCityFuelEfficiency = function withCityFuelEfficiency(cityFuelEfficiency, fuelEfficiencyUnit) {
+    this.withEngineDisplacement = function withEngineDisplacement(engineDisplacement, user) {
+        var volumeUnit = UserMetadatas.VolumePreference.getOrDefault(user, "Instance");
+        return this.withEngineDisplacementOfUnit(engineDisplacement, volumeUnit);
+    };
+    this.withCityFuelEfficiencyOfUnit = function withCityFuelEfficiencyOfUnit(cityFuelEfficiency, fuelEfficiencyUnit) {
         this.cityFuelEfficiency = VehicleMetadatas.CityFuelEfficiency.build(id, cityFuelEfficiency, fuelEfficiencyUnit);
         return this;
     };
-    this.withHighwayFuelEfficiency = function withHighwayFuelEfficiency(highwayFuelEfficiency, fuelEfficiencyUnit) {
+    this.withCityFuelEfficiency = function withCityFuelEfficiency(cityFuelEfficiency, user) {
+        var fuelEfficiencyUnit = UserMetadatas.FuelEfficiencyPreference.getOrDefault(user, "Instance");
+        return this.withCityFuelEfficiencyOfUnit(cityFuelEfficiency, fuelEfficiencyUnit);
+    };
+    this.withHighwayFuelEfficiencyOfUnit = function withHighwayFuelEfficiencyOfUnit(highwayFuelEfficiency, fuelEfficiencyUnit) {
         this.highwayFuelEfficiency = VehicleMetadatas.HighwayFuelEfficiency.build(id, highwayFuelEfficiency, fuelEfficiencyUnit);
         return this;
     };
-    this.withWeight = function withWeight(weight, weightUnit) {
+    this.withHighwayFuelEfficiency = function withHighwayFuelEfficiency(highwayFuelEfficiency, user) {
+        var fuelEfficiencyUnit = UserMetadatas.FuelEfficiencyPreference.getOrDefault(user, "Instance");
+        return this.withHighwayFuelEfficiencyOfUnit(highwayFuelEfficiency, fuelEfficiencyUnit);
+    };
+    this.withWeightOfUnit = function withWeightOfUnit(weight, weightUnit) {
         this.weight = VehicleMetadatas.Weight.build(id, weight, weightUnit);
         return this;
+    };
+    this.withWeight = function withWeight(weight, user) {
+        var weightUnit = UserMetadatas.WeightPreference.getOrDefault(user, "Instance");
+        return this.withWeightOfUnit(weight, weightUnit);
     };
     this.withEngineCylinders = function withEngineCylinders(engineCylinders) {
         this.engineCylinders = VehicleMetadatas.EngineCylinders.build(id, engineCylinders, "None");
         return this;
     };
-    this.withBatteryCapacity = function withBatteryCapacity(batteryCapacity, electricityUnit) {
+    this.withBatteryCapacityOfUnit = function withBatteryCapacityOfUnit(batteryCapacity, electricityUnit) {
         this.batteryCapacity = VehicleMetadatas.BatteryCapacity.build(id, batteryCapacity, electricityUnit);
         return this;
+    };
+    this.withBatteryCapacity = function withBatteryCapacity(batteryCapacity, user) {
+        var electricityUnit = UserMetadatas.ElectricityPreference.getOrDefault(user, "Instance");
+        return this.withBatteryCapacityOfUnit(batteryCapacity, electricityUnit);
     };
     this.withStartStopEngine = function withStartStopEngine(startStop) {
         this.startStop = VehicleMetadatas.StartStop.build(id, startStop, "None");
