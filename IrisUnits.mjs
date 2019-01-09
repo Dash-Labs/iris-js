@@ -604,12 +604,12 @@ export var Hours = new Time("Hours", "hr", "h",
     });
 Object.freeze(Hours);
 
-export var None = new Unit("None", "", "", "",
+export var Instance = new Unit("Instance", "", "", "",
     function convert(value, unit) {
         validateNumber(value);
         return value;
     });
-Object.freeze(None);
+Object.freeze(Instance);
 
 export function Type(name, label, abbreviation) {
     this.name = name;
@@ -882,6 +882,16 @@ export function getUnitObject(unit, enumType) {
             return Pounds;
         case "Kilograms":
             return Kilograms;
+        case "Milliseconds":
+            return Milliseconds;
+        case "Seconds":
+            return Seconds;
+        case "Minutes":
+            return  Minutes;
+        case "Hours":
+            return Hours;
+        case "Instance":
+            return Instance;
         case "Regular":
             return Regular;
         case "Plus":
@@ -1042,8 +1052,6 @@ export function getUnitObject(unit, enumType) {
             return BCI_97R;
         case "BCI_98R":
             return BCI_98R;
-        case "None":
-            return None;
         default:
             throw Error("Unknown unit: " + unit);
     }

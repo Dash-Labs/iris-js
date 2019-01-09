@@ -41,7 +41,6 @@ export function AbstractMetadataBuilder(name, metadataType, unitType, convertToE
         });
     this.name = name;
     this.metadatType = metadataType;
-    this.unit = unit;
     this.getDisplay = function getDisplay() {
         return getDisplayName(name);
     };
