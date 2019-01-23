@@ -1,3 +1,5 @@
+import {UserMetadatas} from "./IrisMetadatas";
+
 function Identifiable(id) {
     this.id = id;
 }
@@ -78,6 +80,86 @@ export function Vehicle(id, adminUserId, defaultDriverId, vin, name, make, model
     this.stockImageUrl = stockImageUrl;
     this.makeLogoImageUrl = makeLogoImageUrl;
     this.vinDecoded = vinDecoded;
+}
+
+export function Drive(id, adminUserId, vehicleId, driverId, dateTime, endDateTime, startTimeZoneId, endTimeZoneId,
+                      startLocation, endLocation, startLocationTag, endLocationTag, startWeather, endWeather,
+                      minimumBatteryVoltageAtStart, startFuelPercentage, endFuelPercentage, distanceDriven,
+                      distanceUnit, averageSpeed, speedUnit, averageFuelEfficiency, fuelEfficiencyUnit, fuelEfficiencyEstimated,
+                      totalFuelConsumed, fuelConsumedUnit, idlingDuration, speedingDuration, computedIdlingSpeedingDateTime, scores, alerts) {
+    Identifiable.call(this, id);
+    Timestamped.call(this, dateTime);
+    EndTimestamped.call(this, endDateTime);
+    this.adminUserId = adminUserId;
+    this.vehicleId = vehicleId;
+    this.driverId = driverId;
+    this.startTimeZoneId = startTimeZoneId;
+    this.endTimeZoneId = endTimeZoneId;
+    this.startLocation = startLocation;
+    this.endLocation = endLocation;
+    this.startLocationTag = startLocationTag;
+    this.endLocationTag = endLocationTag;
+    this.startWeather = startWeather;
+    this.endWeather = endWeather;
+    this.minimumBatteryVoltageAtStart= minimumBatteryVoltageAtStart;
+    this.startFuelPercentage= startFuelPercentage;
+    this.endFuelPercentage = endFuelPercentage;
+    this.distanceDriven = distanceDriven;
+    this.distanceUnit = distanceUnit;
+    this.averageSpeed = averageSpeed;
+    this.speedUnit = speedUnit;
+    this.averageFuelEfficiency = averageFuelEfficiency;
+    this.fuelEfficiencyUnit = fuelEfficiencyUnit;
+    this.fuelEfficiencyEstimated = fuelEfficiencyEstimated;
+    this.totalFuelConsumed = totalFuelConsumed;
+    this.fuelConsumedUnit = fuelConsumedUnit;
+    this.idlingDuration = idlingDuration;
+    this.speedingDuration = speedingDuration;
+    this.computedIdlingSpeedingDateTime = computedIdlingSpeedingDateTime;
+    this.scores = scores;
+    this.alerts = alerts;
+    this.getStartDateFormatted = function getStartDateFormatted() {
+        return this.getStartDateFormattedWithUser(null);
+    };
+    this.getStartDateFormattedWithUser = function getStartDateFormattedWithUser(user) {
+        return this.getDateFormatted(user, dateTime, startTimeZoneId);
+    };
+    this.getEndDateFormatted = function getEndDateFormatted() {
+        return this.getEndDateFormattedWithUser(null);
+    };
+    this.getEndDateFormattedWithUser = function getEndDateFormattedWithUser(user) {
+        return this.getDateFormatted(user, endDateTime, endTimeZoneId);
+    };
+    this.getDateFormatted = function getDateFormatted(user, dateTime, timeZoneId) {
+        if (dateTime == null) {
+            return "";
+        }
+        var userTimeZone = user == null ? moment.tz.guess() : UserMetadatas.TimeZonePreference().getOrDefault(user, "Instance");
+        var driveTimeZone = timeZoneId == null ? userTimeZone : timeZoneId;
+        var formatPattern = "MM/DD/YY";
+        return moment.tz(dateTime, driveTimeZone).format(formatPattern);
+    };
+    this.getStartTimeFormatted = function getStartTimeFormatted() {
+        return this.getStartTimeFormattedWithUser(null);
+    };
+    this.getStartTimeFormattedWithUser = function getStartTimeFormattedWithUser(user) {
+        return this.getTimeFormatted(user, dateTime, startTimeZoneId);
+    };
+    this.getEndTimeFormatted = function getEndTimeFormatted() {
+        return this.getEndTimeFormattedWithUser(null);
+    };
+    this.getEndTimeFormattedWithUser = function getEndTimeFormattedWithUser(user) {
+        return this.getTimeFormatted(user, endDateTime, endTimeZoneId);
+    };
+    this.getTimeFormatted = function getTimeFormatted(user, dateTime, timeZoneId) {
+        if (dateTime == null) {
+            return "";
+        }
+        var userTimeZone = user == null ? moment.tz.guess() : UserMetadatas.TimeZonePreference().getOrDefault(user, "Instance");
+        var driveTimeZone = timeZoneId == null ? userTimeZone : timeZoneId;
+        var formatPattern = userTimeZone == driveTimeZone ?  "h:mm a" : "h:mm a Z";
+        return moment.tz(dateTime, driveTimeZone).format(formatPattern);
+    };
 }
 
 function DriverInfo(driver, dateTime, endDateTime, score, scoreComponents, latest) {
