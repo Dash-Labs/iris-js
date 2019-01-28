@@ -450,7 +450,7 @@ export var KilometerPerHour = new Speed("KilometerPerHour", "KPH", "kph", "k/h",
     });
 Object.freeze(KilometerPerHour);
 
-export var MetersPerSecond = new Speed("MetersPerSecond", "MPS", "mss", "m/s",
+export var MetersPerSecond = new Speed("MetersPerSecond", "MPS", "mps", "m/s",
     function convert(speed, unit) {
         return getUnitObject(unit).toMetersPerSecond(speed);
     },
