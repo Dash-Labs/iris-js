@@ -157,7 +157,7 @@ export var VehicleMetadatas = {
         }),
     TankSize: new AbstractDoubleMetadataBuilder("TankSize", "Volume",
         function getUpperBound(unit) {
-            return getUnitObject(unit).convert(50, "USGallons");
+            return getUnitObject(unit).convert(500, "USGallons");
         },
         function getLowerBound(unit) {
             return getUnitObject(unit).convert(0, "USGallons");
@@ -171,7 +171,7 @@ export var VehicleMetadatas = {
         }),
     EngineDisplacement: new AbstractDoubleMetadataBuilder("EngineDisplacement", "Volume",
         function getUpperBound(unit) {
-            return getUnitObject(unit).convert(10, "Liters");
+            return getUnitObject(unit).convert(20, "Liters");
         },
         function getLowerBound(unit) {
             return getUnitObject(unit).convert(0, "Liters");
@@ -201,7 +201,7 @@ export var VehicleMetadatas = {
         }),
     Weight: new AbstractDoubleMetadataBuilder("Weight", "Weight",
         function getUpperBound(unit) {
-            return getUnitObject(unit).convert(20000, "Pounds");
+            return getUnitObject(unit).convert(100000, "Pounds");
         },
         function getLowerBound(unit) {
             return getUnitObject(unit).convert(0, "Pounds");
