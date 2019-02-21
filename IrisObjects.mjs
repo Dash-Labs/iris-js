@@ -162,13 +162,14 @@ export function Drive(id, adminUserId, vehicleId, driverId, dateTime, endDateTim
     };
 }
 
-function DriverInfo(driver, dateTime, endDateTime, score, scoreComponents, latest) {
+function DriverInfo(driver, dateTime, endDateTime, score, scoreComponents, latest, lastKnownLocation) {
     Timestamped.call(this, dateTime);
     EndTimestamped.call(this, endDateTime);
     this.driver = driver;
     this.score = score;
     this.scoreComponents = scoreComponents;
     this.latest = latest;
+    this.lastKnownLocation = lastKnownLocation;
 }
 
 export function isDriverActivelyDriving(driverInfo) {
@@ -213,7 +214,7 @@ export function EnumDisplay(label, enumValue) {
     this.enumValue = enumValue;
 }
 
-function VehicleInfo(vehicle, dateTime, endDateTime, score, scoreComponents, latest, latestEngineLightAlert) {
+function VehicleInfo(vehicle, dateTime, endDateTime, score, scoreComponents, latest, latestEngineLightAlert, lastKnownLocation) {
     Timestamped.call(this, dateTime);
     EndTimestamped.call(this, endDateTime);
     this.vehicle = vehicle;
@@ -221,6 +222,7 @@ function VehicleInfo(vehicle, dateTime, endDateTime, score, scoreComponents, lat
     this.scoreComponents = scoreComponents;
     this.latest = latest;
     this.latestEngineLightAlert = latestEngineLightAlert;
+    this.lastKnownLocation = lastKnownLocation;
 }
 
 export function isVehicleActivelyDriving(vehicleInfo) {
