@@ -56,6 +56,16 @@ export var UserMetadatas = {
         function getDefault(unit) {
             return "en_US";
         }),
+    UtilizationTargetPerDayPreference: new AbstractDoubleMetadataBuilder("UtilizationTargetPerDayPreference", "Time",
+        function getUpperBound(unit) {
+	    return getUnitObject(unit).convert(24, "Hours");
+	},
+	function getLowerBound(unit) {
+	    return getUnitObject(unit).convert(1, "Hours");
+	}
+	function getDefault(unit) {
+	    return getUnitObject(unit).convert(24, "Hours");
+	}
     IdlingThresholdPreference: new AbstractDoubleMetadataBuilder("IdlingThresholdPreference", "Speed",
         function getUpperBound(unit) {
             return getUnitObject(unit).convert(20, "MilesPerHour");
@@ -64,7 +74,7 @@ export var UserMetadatas = {
             return getUnitObject(unit).convert(1, "MilesPerHour");
         },
         function getDefault(unit) {
-            return 4;
+            return getUnitObject(unit).convert(4, "MilesPerHour");
         },
         function getDecimalsForDisplay() {
             return 0;
@@ -77,7 +87,7 @@ export var UserMetadatas = {
             return getUnitObject(unit).convert(50, "MilesPerHour");
         },
         function getDefault(unit) {
-            return 80;
+            return getUnitObject(unit).convert(80, "MilesPerHour");
         },
         function getDecimalsForDisplay() {
             return 0;

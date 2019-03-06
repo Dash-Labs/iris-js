@@ -149,8 +149,17 @@ export function AdminUserUpdateBuilder(id) {
     this.speedPreference = null;
     this.timeZonePreference = null;
     this.localePreference = null;
+    this.utilizationTargetPerDayPreference = null;
     this.idlingThresholdPreference = null;
     this.speedingThresholdPreference = null;
+    this.lowFuelThresholdPreference = null;
+    this.longDriveTimeThresholdPreference = null;
+    this.longDriveDistanceThresholdPreference = null;
+    this.nightDriveTimeThresholdPreference = null;
+    this.ambientTemperatureThresholdPreference = null;
+    this.migrationInProgress = null;
+    this.migrationOfDrivesInProgress = null;
+    this.subscriptionActive = null;
     this.withName = function(name) {
         this.name = name;
         return this;
@@ -207,14 +216,62 @@ export function AdminUserUpdateBuilder(id) {
         this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "None");
         return this;
     };
+
+    this.withUtilizationTargetPerDayPreference = function(utilizationTargetPerDayPreference, utilizationUnit) {
+        this.utilizationTargetPerDayPreference = UserMetadatas.UtilizationTargetPerDayPreference.build(id, utilizationTargetPerDayPreference, utilizationUnit);
+	return this;
+    };	
+    
     this.withIdlingThresholdPreference = function(idlingThresholdPreference, idlingUnit) {
         this.idlingThresholdPreference = UserMetadatas.IdlingThresholdPreference.build(id, idlingThresholdPreference, idlingUnit);
         return this;
     };
+    
     this.withSpeedingThresholdPreference = function(speedingThresholdPreference, speedingUnit) {
         this.speedingThresholdPreference = UserMetadatas.SpeedingThresholdPreference.build(id, speedingThresholdPreference, speedingUnit);
         return this;
     };
+    
+    this.withLowFuelThresholdPreference = function(lowFuelThresholdPreference) {
+        this.lowFuelThresholdPreference = UserMetadatas.LowFuelThresholdPreference.build(id, lowFuelThresholdPreference, "None");
+	return this;
+    };
+
+    this.withLongDriveTimeThresholdPreference = function(longDriveTimeThresholdPreference, timeUnit) {
+        this.longDriveTimeThresholdPreference = UserMetadatas.LongDriveTimeThresholdPreference.build(id, longDriveTimeThresholdPreference, timeUnit);
+	return this;
+    };
+
+    this.withLongDriveDistanceThresholdPreference = function(longDriveDistanceThresholdPreference, distanceUnit) {
+        this.longDriveDistanceThresholdPreference = UserMetadatas.LongDriveDistanceThresholdPreference.build(id, longDriveDistanceThresholdPreference, distanceUnit);
+	return this;
+    };
+
+    this.withNightDriveTimeThresholdPreference = function(nightDriveTimeThresholdPreference, timeUnit) {
+        this.nightDriveTimeThresholdPreference = UserMetadatas.NightDriveTimeThresholdPreference.build(id, nightDriveTimeThresholdPreference, timeUnit);
+	return this;
+    };
+
+    this.withAmbientTemperatureThresholdPreference = function(ambientTemperatureThresholdPreference, temperatureUnit) {
+        this.ambientTemperatureThresholdPreference = UserMetadatas.AmbientTemperatureThresholdPreference.build(id, ambientTemperatureThresholdPreference, temperatureUnit);
+	return this;
+    };
+
+    this.withMigrationInProgress = function(migrationInProgress) {
+        this.migrationInProgress = UserMetadatas.MigrationInProgress.build(id, migrationInProgress, "None");
+	return this;
+    };
+
+    this.withMigrationOfDrivesInProgress = function(migrationOfDrivesInProgress) {
+        this.migrationOfDrivesInProgress = UserMetadatas.MigrationOfDrivesInProgress.build(id, migrationOfDrivesInProgress, "None");
+	return this;
+    };
+
+    this.withSubscriptionActive = function(subscriptionActive) {
+        this.subscriptionActive = UserMetadatas.SubscriptionActive.build(id, subscriptionActive, "None");
+	return this;
+    };	
+
     this.buildUpdate = function() {
         var metadata = new Array(8);
         if (this.distancePreference != null) {
@@ -247,13 +304,40 @@ export function AdminUserUpdateBuilder(id) {
         if (this.localePreference != null) {
             metadata.push(this.localePreference);
         }
+	if (this.utilizationTargetPerDayPreference != null) {
+            metadata.push(this.utilizationTargetPerDayPreference);
+        }
         if (this.idlingThresholdPreference != null) {
             metadata.push(this.idlingThresholdPreference);
         }
         if (this.speedingThresholdPreference != null) {
             metadata.push(this.speedingThresholdPreference);
         }
-        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.id, Date.now(), this.address), null, null, metadata);
+	if (this.lowFuelThresholdPreference != null) {
+            metadata.push(this.lowFuelThresholdPreference);
+        }
+        if (this.longDriveTimeThresholdPreference != null) {
+            metadata.push(this.longDriveTimeThresholdPreference);
+        }
+        if (this.longDriveDistanceThresholdPreference != null) {
+            metadata.push(this.longDriveDistanceThresholdPreference);
+        }
+        if (this.nightDriveTimeThresholdPreference != null) {
+            metadata.push(this.nightDriveTimeThresholdPreference);
+        }
+        if (this.ambientTemperatureThresholdPreference != null) {
+            metadata.push(this.ambientTemperatureThresholdPreference);
+        }
+        if (this.migrationInProgress != null) {
+            metadata.push(this.migrationInProgress);
+        }
+        if (this.migrationOfDrivesInProgress != null) {
+            metadata.push(this.migrationOfDrivesInProgress);
+        }
+        if (this.subscriptionActive != null) {
+            metadata.push(this.subscriptionActive);
+        }
+        return new AdminUser(this.id, this.name, null, this.phoneNumber, this.companyName, null, this.address == null ? null : forUserUpdate(this.id, Date.now(), this.address), null, null, null, metadata);
     }
 }
 

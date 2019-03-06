@@ -29,7 +29,7 @@ export function Metadata(id, name, value, displayValue, type, enumerationValues,
     this.unit = unit;
 }
 
-export function AdminUser(id, name, email, phoneNumber, companyName, imageUrl, location, vehicles, drivers, metadata) {
+export function AdminUser(id, name, email, phoneNumber, companyName, imageUrl, location, vehicles, drivers, linkedAccounts, metadata) {
     Identifiable.call(this, id);
     MetadataContainer.call(this, metadata);
     this.name = name;
@@ -40,6 +40,7 @@ export function AdminUser(id, name, email, phoneNumber, companyName, imageUrl, l
     this.location = location;
     this.vehicles = vehicles;
     this.drivers = drivers;
+    this.linkedAccounts = linkedAccounts;
 }
 
 function Alert(id, dateTime, type, driverId, vehicleId, title, description, location, dtcs, resolvedDateTime) {
