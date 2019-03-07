@@ -62,7 +62,7 @@ export var UserMetadatas = {
 	},
 	function getLowerBound(unit) {
 	    return getUnitObject(unit).convert(1, "Hours");
-	}
+	},
 	function getDefault(unit) {
 	    return getUnitObject(unit).convert(8, "Hours");
 	},
