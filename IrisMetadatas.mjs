@@ -65,7 +65,7 @@ export var UserMetadatas = {
 	}
 	function getDefault(unit) {
 	    return getUnitObject(unit).convert(8, "Hours");
-	}
+	}),
     IdlingThresholdPreference: new AbstractDoubleMetadataBuilder("IdlingThresholdPreference", "Speed",
         function getUpperBound(unit) {
             return getUnitObject(unit).convert(20, "MilesPerHour");
@@ -148,6 +148,10 @@ export var UserMetadatas = {
         function getDefault(unit) {
             return false;
         }),
+    MigrationOfDrivesInProgress: new AbstractBooleanMetadataBuilder("MigrationOfDrivesInProgress", "None",
+        function getDefault(unit) {
+            return false;
+        }),	
     SubscriptionActive: new AbstractBooleanMetadataBuilder("SubscriptionActive", "None",
         function getDefault(unit) {
             return false;
