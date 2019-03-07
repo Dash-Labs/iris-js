@@ -65,7 +65,10 @@ export var UserMetadatas = {
 	}
 	function getDefault(unit) {
 	    return getUnitObject(unit).convert(8, "Hours");
-	}),
+	},
+	function getDecimalsForDisplay() {
+            return 0;
+        }),
     IdlingThresholdPreference: new AbstractDoubleMetadataBuilder("IdlingThresholdPreference", "Speed",
         function getUpperBound(unit) {
             return getUnitObject(unit).convert(20, "MilesPerHour");
