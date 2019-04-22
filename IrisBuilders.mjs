@@ -177,43 +177,43 @@ export function AdminUserUpdateBuilder(id) {
         return this;
     };
     this.withDistancePreference = function(distancePreference) {
-        this.distancePreference = UserMetadatas.DistancePreference.build(id, distancePreference, "None");
+        this.distancePreference = UserMetadatas.DistancePreference.build(id, distancePreference, "Instance");
         return this;
     };
     this.withTemperaturePreference = function(temperaturePreference) {
-        this.temperaturePreference = UserMetadatas.TemperaturePreference.build(id, temperaturePreference, "None");
+        this.temperaturePreference = UserMetadatas.TemperaturePreference.build(id, temperaturePreference, "Instance");
         return this;
     };
     this.withVolumePreference = function(volumePreference) {
-        this.volumePreference = UserMetadatas.VolumePreference.build(id, volumePreference, "None");
+        this.volumePreference = UserMetadatas.VolumePreference.build(id, volumePreference, "Instance");
         return this;
     };
     this.withPressurePreference = function(pressurePreference) {
-        this.pressurePreference = UserMetadatas.PressurePreference.build(id, pressurePreference, "None");
+        this.pressurePreference = UserMetadatas.PressurePreference.build(id, pressurePreference, "Instance");
         return this;
     };
     this.withWeightPreference = function(weightPreference) {
-        this.weightPreference = UserMetadatas.WeightPreference.build(id, weightPreference, "None");
+        this.weightPreference = UserMetadatas.WeightPreference.build(id, weightPreference, "Instance");
         return this;
     };
     this.withElectricityPreference = function(electricityPreference) {
-        this.electricityPreference = UserMetadatas.ElectricityPreference.build(id, electricityPreference, "None");
+        this.electricityPreference = UserMetadatas.ElectricityPreference.build(id, electricityPreference, "Instance");
         return this;
     };
     this.withFuelEfficiencyPreference = function(fuelEfficiencyPreference) {
-        this.fuelEfficiencyPreference = UserMetadatas.FuelEfficiencyPreference.build(id, fuelEfficiencyPreference, "None");
+        this.fuelEfficiencyPreference = UserMetadatas.FuelEfficiencyPreference.build(id, fuelEfficiencyPreference, "Instance");
         return this;
     };
     this.withSpeedPreference = function(speedPreference) {
-        this.speedPreference = UserMetadatas.SpeedPreference.build(id, speedPreference, "None");
+        this.speedPreference = UserMetadatas.SpeedPreference.build(id, speedPreference, "Instance");
         return this;
     };
     this.withTimeZonePreference = function(timeZone) {
-        this.timeZonePreference = UserMetadatas.TimeZonePreference.build(id, timeZone, "None");
+        this.timeZonePreference = UserMetadatas.TimeZonePreference.build(id, timeZone, "Instance");
         return this;
     };
     this.withLocalePreference = function(locale) {
-        this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "None");
+        this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "Instance");
         return this;
     };
 
@@ -229,11 +229,11 @@ export function AdminUserUpdateBuilder(id) {
     
     this.withSpeedingThresholdPreference = function(speedingThresholdPreference, speedingUnit) {
         this.speedingThresholdPreference = UserMetadatas.SpeedingThresholdPreference.build(id, speedingThresholdPreference, speedingUnit);
-        return this;
+        return this;none
     };
     
     this.withLowFuelThresholdPreference = function(lowFuelThresholdPreference) {
-        this.lowFuelThresholdPreference = UserMetadatas.LowFuelThresholdPreference.build(id, lowFuelThresholdPreference, "None");
+        this.lowFuelThresholdPreference = UserMetadatas.LowFuelThresholdPreference.build(id, lowFuelThresholdPreference, "Instance");
 	return this;
     };
 
@@ -258,17 +258,17 @@ export function AdminUserUpdateBuilder(id) {
     };
 
     this.withMigrationInProgress = function(migrationInProgress) {
-        this.migrationInProgress = UserMetadatas.MigrationInProgress.build(id, migrationInProgress, "None");
+        this.migrationInProgress = UserMetadatas.MigrationInProgress.build(id, migrationInProgress, "Instance");
 	return this;
     };
 
     this.withMigrationOfDrivesInProgress = function(migrationOfDrivesInProgress) {
-        this.migrationOfDrivesInProgress = UserMetadatas.MigrationOfDrivesInProgress.build(id, migrationOfDrivesInProgress, "None");
+        this.migrationOfDrivesInProgress = UserMetadatas.MigrationOfDrivesInProgress.build(id, migrationOfDrivesInProgress, "Instance");
 	return this;
     };
 
     this.withSubscriptionActive = function(subscriptionActive) {
-        this.subscriptionActive = UserMetadatas.SubscriptionActive.build(id, subscriptionActive, "None");
+        this.subscriptionActive = UserMetadatas.SubscriptionActive.build(id, subscriptionActive, "Instance");
 	return this;
     };	
 
@@ -408,7 +408,7 @@ export function VehicleUpdateBuilder(id) {
         return this.withTankSizeOfUnit(tankSize, volumeUnit);
     };
     this.withFuelType = function withFuelType(fuel) {
-        this.fuelType = VehicleMetadatas.FuelType.build(id, fuel, "None");
+        this.fuelType = VehicleMetadatas.FuelType.build(id, fuel, "Instance");
         return this;
     };
     this.withEngineDisplacementOfUnit = function withEngineDisplacementOfUnit(engineDisplacement, volumeUnit) {
@@ -444,7 +444,7 @@ export function VehicleUpdateBuilder(id) {
         return this.withWeightOfUnit(weight, weightUnit);
     };
     this.withEngineCylinders = function withEngineCylinders(engineCylinders) {
-        this.engineCylinders = VehicleMetadatas.EngineCylinders.build(id, engineCylinders, "None");
+        this.engineCylinders = VehicleMetadatas.EngineCylinders.build(id, engineCylinders, "Instance");
         return this;
     };
     this.withBatteryCapacityOfUnit = function withBatteryCapacityOfUnit(batteryCapacity, electricityUnit) {
@@ -456,27 +456,27 @@ export function VehicleUpdateBuilder(id) {
         return this.withBatteryCapacityOfUnit(batteryCapacity, electricityUnit);
     };
     this.withStartStopEngine = function withStartStopEngine(startStop) {
-        this.startStop = VehicleMetadatas.StartStop.build(id, startStop, "None");
+        this.startStop = VehicleMetadatas.StartStop.build(id, startStop, "Instance");
         return this;
     };
     this.withBatteryGroupSize = function withBatteryGroupSize(batteryGroupSize) {
-        this.batteryGroupSize = VehicleMetadatas.BatteryGroupSize.build(id, batteryGroupSize, "None");
+        this.batteryGroupSize = VehicleMetadatas.BatteryGroupSize.build(id, batteryGroupSize, "Instance");
         return this;
     };
     this.withBatteryColdCrankingAmps = function withBatteryColdCrankingAmps(batteryColdCrankingAmps) {
-        this.batteryColdCrankingAmps = VehicleMetadatas.BatteryColdCrankingAmps.build(id, batteryColdCrankingAmps, "None");
+        this.batteryColdCrankingAmps = VehicleMetadatas.BatteryColdCrankingAmps.build(id, batteryColdCrankingAmps, "Instance");
         return this;
     };
     this.withHorsePower = function withHorsePower(horsePower) {
-        this.horsePower = VehicleMetadatas.HorsePower.build(id, horsePower, "None");
+        this.horsePower = VehicleMetadatas.HorsePower.build(id, horsePower, "Instance");
         return this;
     };
     this.withOilType = function withOilType(oilType) {
-        this.oilType = VehicleMetadatas.OilType.build(id, oilType, "None");
+        this.oilType = VehicleMetadatas.OilType.build(id, oilType, "Instance");
         return this;
     };
     this.withLicensePlate = function withLicensePlate(licensePlate) {
-        this.licensePlate = VehicleMetadatas.LicensePlate.build(id, licensePlate, "None");
+        this.licensePlate = VehicleMetadatas.LicensePlate.build(id, licensePlate, "Instance");
         return this;
     };
     this.buildUpdate = function() {
@@ -564,43 +564,43 @@ export function DriverUpdateBuilder(id) {
         return this;
     };
     this.withDistancePreference = function(distancePreference) {
-        this.distancePreference = UserMetadatas.DistancePreference.build(id, distancePreference, "None");
+        this.distancePreference = UserMetadatas.DistancePreference.build(id, distancePreference, "Instance");
         return this;
     };
     this.withTemperaturePreference = function(temperaturePreference) {
-        this.temperaturePreference = UserMetadatas.TemperaturePreference.build(id, temperaturePreference, "None");
+        this.temperaturePreference = UserMetadatas.TemperaturePreference.build(id, temperaturePreference, "Instance");
         return this;
     };
     this.withVolumePreference = function(volumePreference) {
-        this.volumePreference = UserMetadatas.VolumePreference.build(id, volumePreference, "None");
+        this.volumePreference = UserMetadatas.VolumePreference.build(id, volumePreference, "Instance");
         return this;
     };
     this.withPressurePreference = function(pressurePreference) {
-        this.pressurePreference = UserMetadatas.PressurePreference.build(id, pressurePreference, "None");
+        this.pressurePreference = UserMetadatas.PressurePreference.build(id, pressurePreference, "Instance");
         return this;
     };
     this.withWeightPreference = function(weightPreference) {
-        this.weightPreference = UserMetadatas.WeightPreference.build(id, weightPreference, "None");
+        this.weightPreference = UserMetadatas.WeightPreference.build(id, weightPreference, "Instance");
         return this;
     };
     this.withElectricityPreference = function(electricityPreference) {
-        this.electricityPreference = UserMetadatas.ElectricityPreference.build(id, electricityPreference, "None");
+        this.electricityPreference = UserMetadatas.ElectricityPreference.build(id, electricityPreference, "Instance");
         return this;
     };
     this.withFuelEfficiencyPreference = function(fuelEfficiencyPreference) {
-        this.fuelEfficiencyPreference = UserMetadatas.FuelEfficiencyPreference.build(id, fuelEfficiencyPreference, "None");
+        this.fuelEfficiencyPreference = UserMetadatas.FuelEfficiencyPreference.build(id, fuelEfficiencyPreference, "Instance");
         return this;
     };
     this.withSpeedPreference = function(speedPreference) {
-        this.speedPreference = UserMetadatas.SpeedPreference.build(id, speedPreference, "None");
+        this.speedPreference = UserMetadatas.SpeedPreference.build(id, speedPreference, "Instance");
         return this;
     };
     this.withTimeZonePreference = function(timeZone) {
-        this.timeZonePreference = UserMetadatas.TimeZonePreference.build(id, timeZone, "None");
+        this.timeZonePreference = UserMetadatas.TimeZonePreference.build(id, timeZone, "Instance");
         return this;
     };
     this.withLocalePreference = function(locale) {
-        this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "None");
+        this.localePreference = UserMetadatas.LocalePreference.build(id, locale, "Instance");
         return this;
     };
     this.withIdlingThresholdPreference = function(idlingThresholdPreference, idlingUnit) {
@@ -653,7 +653,7 @@ export function DriverUpdateBuilder(id) {
     }
 }
 
-function getDisplayName(name) {
+export function getDisplayName(name) {
     return getDisplayNameWithCapitalize(name, false);
 }
 

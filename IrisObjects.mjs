@@ -1,4 +1,6 @@
 import {UserMetadatas} from "./IrisMetadatas";
+import {High, Medium, Low, No} from "./IrisMaintenance";
+import {getUnitObject} from "./IrisUnits";
 
 function Identifiable(id) {
     this.id = id;
@@ -232,4 +234,65 @@ export function isVehicleActivelyDriving(vehicleInfo) {
 
 export function isHealthy(vehicleInfo) {
     return (vehicleInfo.latestEngineLightAlert == null) || (vehicleInfo.latestEngineLightAlert.resolvedDateTime != null);
+}
+
+function Maintenance(id, vehicleId, type, dateTime, dueDate, highUrgencyDays, mediumUrgencyDays, lowUrgencyDays, title, notes, iconImageUrl,
+                     iconHighlightImageUrl, estimatedCost, estimatedCostCurrencyCode, actualCost, actualCostCurrencyCode, serviceDateTime,
+                     maintenanceProvider, serviceNotes) {
+    this.id = id;
+    this.vehicleId = vehicleId;
+    this.type = type;
+    this.dateTime = dateTime;
+    this.dueDate = dueDate;
+    this.highUrgencyDays = highUrgencyDays;
+    this.mediumUrgencyDays = mediumUrgencyDays;
+    this.lowUrgencyDays = lowUrgencyDays;
+    this.title = title;
+    this.notes = notes;
+    this.iconImageUrl = iconImageUrl;
+    this.iconHighlightImageUrl = iconHighlightImageUrl;
+    this.estimatedCost = estimatedCost;
+    this.estimatedCostCurrencyCode = estimatedCostCurrencyCode;
+    this.actualCost = actualCost;
+    this.actualCostCurrencyCode = actualCostCurrencyCode;
+    this.serviceDateTime = serviceDateTime;
+    this.maintenanceProvider = maintenanceProvider;
+    this.serviceNotes = serviceNotes;
+    this.getUrgency = function getUrgency() {
+        return this.getUrgencyWithTime(Date.now())
+    };
+    this.getUrgencyWithTime = function getUrgencyWithTime(from) {
+        if (dateTime == null || highUrgencyDays == null || mediumUrgencyDays == null || lowUrgencyDays == null) {
+            return null;
+        }
+        var days = Math.round((from - dateTime) / 86400000);
+        if (days >= highUrgencyDays) {
+            return High;
+        } else if (days >= mediumUrgencyDays) {
+            return Medium;
+        } else if (days >= lowUrgencyDays) {
+            return Low;
+        }
+        return No;
+    };
+}
+
+function MaintenanceDuration(distancePerMaintenance, distanceUnit, millisecondsPerMaintenance, absoluteDueDate) {
+    this.distancePerMaintenance = distancePerMaintenance;
+    this.distanceUnit = distanceUnit;
+    this.millisecondsPerMaintenance = millisecondsPerMaintenance;
+    this.absoluteDueDate = absoluteDueDate;
+}
+
+export function fromDistance(distancePerMaintenance, user) {
+    var unit = UserMetadatas.DistancePreference.getOrDefault(user);
+    return new MaintenanceDuration(distancePerMaintenance, getUnitObject(unit), null, null);
+}
+
+export function fromDuration(millisecondsPerMaintenance) {
+    return new MaintenanceDuration(null, null, millisecondsPerMaintenance, null);
+}
+
+export function fromAbsoluteDueDate(absoluteDueDate) {
+    return new MaintenanceDuration(null, null, null, absoluteDueDate);
 }
