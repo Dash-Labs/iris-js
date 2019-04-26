@@ -286,7 +286,7 @@ function MaintenanceDuration(distancePerMaintenance, distanceUnit, millisecondsP
 
 export function fromDistance(distancePerMaintenance, user) {
     var unit = UserMetadatas.DistancePreference.getOrDefault(user);
-    return new MaintenanceDuration(distancePerMaintenance, getUnitObject(unit), null, null);
+    return new MaintenanceDuration(distancePerMaintenance, unit, null, null);
 }
 
 export function fromDuration(millisecondsPerMaintenance) {
