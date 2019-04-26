@@ -262,10 +262,10 @@ function Maintenance(id, vehicleId, type, dateTime, dueDate, highUrgencyDays, me
         return this.getUrgencyWithTime(Date.now())
     };
     this.getUrgencyWithTime = function getUrgencyWithTime(from) {
-        if (dateTime == null || highUrgencyDays == null || mediumUrgencyDays == null || lowUrgencyDays == null) {
+        if (dueDate == null || highUrgencyDays == null || mediumUrgencyDays == null || lowUrgencyDays == null) {
             return null;
         }
-        var days = Math.round((from - dateTime) / 86400000);
+        var days = Math.round((from - dueDate) / 86400000);
         if (days >= highUrgencyDays) {
             return High;
         } else if (days >= mediumUrgencyDays) {
